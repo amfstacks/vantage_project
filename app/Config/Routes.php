@@ -5,13 +5,13 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
+// $routes->get('/', 'Home::index');
 
 // Public Auth Routes
 $routes->get('login', 'Auth::login');
 $routes->post('login/attempt', 'Auth::attemptLogin');
 $routes->get('logout', 'Auth::logout');
-
+$routes->get('/', 'Frontend\Home::index');
 
 
 // Protected Admin Routes (Grouped with the filter)
