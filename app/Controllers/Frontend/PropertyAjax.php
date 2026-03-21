@@ -171,4 +171,51 @@ class PropertyAjax extends BaseController
         
         return $this->response->setJSON(['html' => $html]);
     }
+
+    public function loadLocations()
+    {
+        $db = \Config\Database::connect();
+        
+        // 1. Get the top 6 locations with the most active properties
+        $query = $db->query("
+            SELECT location, COUNT(id) as property_count 
+            FROM properties 
+            WHERE status = 'active' 
+            GROUP BY location 
+            ORDER BY property_count DESC 
+            LIMIT 6
+        ");
+        $topLocations = $query->getResult();
+
+        $locationsData = [];
+
+        // 2. For each location, grab ONE random image from its active properties
+        foreach ($topLocations as $loc) {
+            $imageQuery = $db->query("
+                SELECT pi.image_path 
+                FROM properties p
+                JOIN property_images pi ON pi.property_id = p.id AND pi.is_primary = 1
+                WHERE p.status = 'active' AND p.location = ?
+                ORDER BY RAND() 
+                LIMIT 1
+            ", [$loc->location]);
+            
+            $imgResult = $imageQuery->getRow();
+            
+            // Safe fallback just in case a property was published without an image
+            $imagePath = $imgResult ? base_url($imgResult->image_path) : base_url('assets/img/all-images/property_location/property-img1.png');
+
+            $locationsData[] = [
+                'name'  => $loc->location,
+                'count' => $loc->property_count,
+                'image' => $imagePath,
+                'url'   => base_url('properties?location=' . urlencode($loc->location)) // Ready for the future Search page
+            ];
+        }
+
+        // 3. Render the HTML
+        $html = view('components/home/location_slider', ['locationsData' => $locationsData]);
+        
+        return $this->response->setJSON(['html' => $html]);
+    }
 }

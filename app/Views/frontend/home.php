@@ -557,104 +557,57 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   <!--===== PROPERTY-LOCATION AREA STARTS =======-->
-  <div class="property-location-section-area sp1">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 m-auto">
-          <div class="property-headeing heading1 space-margin60 text-center">
-            <h5>property location</h5>
-            <div class="space20"></div>
-            <h2 class="text-anime-style-3">Explore Our Property Location</h2>
-          </div>
-        </div>
-      </div>
+ <div id="ajax-locations-container"></div>
 
-      <div class="row">
-        <div class="col-lg-12" data-aos="fade-up" data-aos-duration="1000">
-          <div class="property-single-slider owl-carousel">
-            <div class="propety-single-boxarea">
-              <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img1.png" alt="<?= esc(config('Site')->siteName) ?>">
-              </div>
-              <h3>32</h3>
-              <a href="property-details-v1.html">San Francisco</a>
-            </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const locContainer = document.getElementById('ajax-locations-container');
+    
+    fetch('<?= base_url('ajax/load-locations') ?>')
+        .then(response => response.json())
+        .then(data => {
+            if (data.html) {
+                // 1. Inject the HTML
+                locContainer.innerHTML = data.html;
+                
+                // 2. Wait 100ms for the browser to "paint" the HTML into the DOM
+                setTimeout(() => {
+                    if (typeof $.fn.owlCarousel !== 'undefined') {
+                        const $carousel = $('.ajax-loc-carousel');
+                        
+                        // Count how many locations actually returned from the DB
+                        const itemCount = $carousel.find('.propety-single-boxarea').length;
+                        
+                        // Only enable loop if we have more than 5 items, otherwise it crashes!
+                        const shouldLoop = itemCount > 5;
 
-            <div class="propety-single-boxarea">
-              <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img2.png" alt="<?= esc(config('Site')->siteName) ?>">
-              </div>
-              <h3>12</h3>
-              <a href="property-details-v1.html">Los Angeles</a>
-            </div>
-
-            <div class="propety-single-boxarea">
-              <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img3.png" alt="<?= esc(config('Site')->siteName) ?>">
-              </div>
-              <h3>15</h3>
-              <a href="property-details-v1.html">New York</a>
-            </div>
-
-            <div class="propety-single-boxarea">
-              <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img4.png" alt="<?= esc(config('Site')->siteName) ?>">
-              </div>
-              <h3>40</h3>
-              <a href="property-details-v1.html">San Diego</a>
-            </div>
-
-            <div class="propety-single-boxarea">
-              <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img5.png" alt="<?= esc(config('Site')->siteName) ?>">
-              </div>
-              <h3>19</h3>
-              <a href="property-details-v1.html">Dallas Texas</a>
-            </div>
-            <div class="propety-single-boxarea">
-              <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img1.png" alt="<?= esc(config('Site')->siteName) ?>">
-              </div>
-              <h3>32</h3>
-              <a href="property-details-v1.html">San Francisco</a>
-            </div>
-
-            <div class="propety-single-boxarea">
-              <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img2.png" alt="<?= esc(config('Site')->siteName) ?>">
-              </div>
-              <h3>12</h3>
-              <a href="property-details-v1.html">Los Angeles</a>
-            </div>
-
-            <div class="propety-single-boxarea">
-              <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img3.png" alt="<?= esc(config('Site')->siteName) ?>">
-              </div>
-              <h3>15</h3>
-              <a href="property-details-v1.html">New York</a>
-            </div>
-
-            <div class="propety-single-boxarea">
-              <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img4.png" alt="<?= esc(config('Site')->siteName) ?>">
-              </div>
-              <h3>40</h3>
-              <a href="property-details-v1.html">San Diego</a>
-            </div>
-
-            <div class="propety-single-boxarea">
-              <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img5.png" alt="<?= esc(config('Site')->siteName) ?>">
-              </div>
-              <h3>19</h3>
-              <a href="property-details-v1.html">Dallas Texas</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+                        $carousel.owlCarousel({
+                            loop: shouldLoop,
+                            margin: 24,
+                            nav: false,
+                            dots: true,
+                            autoplay: true,
+                            autoplayTimeout: 4000,
+                            smartSpeed: 800,
+                            responsive: {
+                                0: { items: 1, loop: itemCount > 1 },
+                                576: { items: 2, loop: itemCount > 2 },
+                                768: { items: 3, loop: itemCount > 3 },
+                                992: { items: 4, loop: itemCount > 4 },
+                                1200: { items: 5, loop: shouldLoop } 
+                            }
+                        });
+                    } else {
+                        console.error('Owl Carousel plugin is missing!');
+                    }
+                }, 100);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching locations:', error);
+        });
+});
+</script>
 
 
    <!--===== CTA AREA STARTS =======-->
