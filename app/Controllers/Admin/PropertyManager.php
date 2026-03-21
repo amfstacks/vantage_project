@@ -118,6 +118,16 @@ class PropertyManager extends BaseController
         if (!$this->validate($rules)) {
             return redirect()->back()->withInput()->with('error', $this->validator->listErrors());
         }
+        $title = $this->request->getPost('title');
+        $slug = url_title($title, '-', true); 
+        
+        $baseSlug = $slug;
+        $counter = 1;
+        // Check if slug exists. If it does, append -1, -2, etc. until it's unique.
+        while ($this->propertyModel->where('slug', $slug)->first()) {
+            $slug = $baseSlug . '-' . $counter;
+            $counter++;
+        }
 
         // --- 2. PREPARE CORE PROPERTY DATA ---
         // Determine status based on which button was clicked (Draft vs Publish)
@@ -126,6 +136,7 @@ class PropertyManager extends BaseController
 
         $propertyData = [
             'user_id'          => session()->get('user_id'), // Logged in admin/seller
+            'slug'             => $slug,
             'title'            => $this->request->getPost('title'),
             'purpose'          => $this->request->getPost('purpose'),
             'property_type'    => $this->request->getPost('property_type'),

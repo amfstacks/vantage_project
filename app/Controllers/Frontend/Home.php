@@ -18,7 +18,8 @@ class Home extends BaseController
             ->select('properties.*, property_images.image_path')
             ->join('property_images', 'property_images.property_id = properties.id AND property_images.is_primary = 1', 'left')
             ->where('properties.status', 'active')
-            ->orderBy('properties.created_at', 'DESC')
+            // ->orderBy('properties.created_at', 'DESC')
+            ->orderBy('RAND()')
             ->limit(6)
             ->find();
 

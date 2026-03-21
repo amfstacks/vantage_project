@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"); */
 a, a:hover {
   text-decoration: none;
 }
@@ -425,7 +426,7 @@ img {
   --ztc-text-text-8: #FF6B00;
   --ztc-bg-bg-1: #fff;
   --ztc-bg-bg-2: #030E0F;
-  --ztc-bg-bg-3: #CBCD30;
+  --ztc-bg-bg-3: #CFB53B;
   --ztc-bg-bg-4: #073B3A;
   --ztc-bg-bg-5: #FCC608;
   --ztc-bg-bg-6: #1A47FB;
@@ -534,8 +535,8 @@ img {
   --ztc-weight-semibold: 600;
   --ztc-weight-bold: 700;
   --ztc-weight-black: 800;
-  --ztc-family-font1: 'Inter', sans-serif;
-  --ztc-family-font2: 'Inter', sans-serif;
+  --ztc-family-font1: 'Outfit', sans-serif;
+  --ztc-family-font2: 'Outfit', sans-serif;
 }
 
 /*

@@ -20,6 +20,7 @@ class PropertyModel extends Model
     protected $allowedFields    = [
         'user_id', 
         'title', 
+        'slug',
         'description', 
         'price', 
         'price_unit',        // Added
