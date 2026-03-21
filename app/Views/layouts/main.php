@@ -10,7 +10,8 @@
 
   <link rel="stylesheet" href="<?= base_url('assets/css/plugins/bootstrap.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('assets/css/plugins/aos.css') ?>">
-  <link rel="stylesheet" href="<?= base_url('assets/css/plugins/fontawesome.css') ?>">
+  <!-- <link rel="stylesheet" href="<?= base_url('assets/css/plugins/fontawesome.css') ?>"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/css/plugins/magnific-popup.css') ?>">
   <link rel="stylesheet" href="<?= base_url('assets/css/plugins/mobile.css') ?>">
   <link rel="stylesheet" href="<?= base_url('assets/css/plugins/owlcarousel.min.css') ?>">
@@ -207,7 +208,94 @@
   <script src="<?= base_url('assets/js/plugins/waypoints.js') ?>"></script>
   <script src="<?= base_url('assets/js/plugins/slick-slider.js') ?>"></script>
   <script src="<?= base_url('assets/js/plugins/circle-progress.js') ?>"></script>
+  <!-- <script src="<?= base_url('assets/js/plugins/fontawesome.js') ?>"></script> -->
   <script src="<?= base_url('assets/js/main.js') ?>"></script>
 
+ <style>
+      /* Enforce Premium Typography on the Modal */
+      #globalAmenitiesModal, 
+      #globalAmenitiesModal .modal-title, 
+      #globalAmenitiesModal * {
+          font-family: inherit !important; /* Forces it to use Outfit/Montserrat */
+      }
+
+      /* The Gold Pulsating Button */
+      .gold-pulse-btn {
+          background-color: transparent;
+          color: #D4AF37;
+          border: 1px solid #D4AF37;
+          border-radius: 6px;
+          padding: 8px 16px;
+          font-size: 13px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          animation: pulse-gold 2s infinite;
+          display: inline-flex;
+          align-items: center;
+          width: 100%;
+          justify-content: center;
+      }
+      .gold-pulse-btn:hover {
+          background-color: #D4AF37;
+          color: #fff;
+          animation: none;
+          box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+      }
+      @keyframes pulse-gold {
+          0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+          70% { box-shadow: 0 0 0 8px rgba(212, 175, 55, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+      }
+
+      /* Luxury Hover Effect for the Amenity Pills */
+      .amenity-pill:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+          border-color: #D4AF37 !important;
+      }
+  </style>
+
+  <div class="modal fade" id="globalAmenitiesModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg"> <div class="modal-content shadow-lg" style="border-radius: 16px; border: none; overflow: hidden;">
+        
+        <div class="modal-header bg-gray-50" style="border-bottom: 1px solid #eaeaea; padding: 20px 24px;">
+          <h4 class="modal-title font-extrabold text-gray-900 d-flex align-items-center" id="amenitiesModalTitle" style="font-size: 1.25rem;">
+            <i class="fa-solid fa-gem mr-2" style="color: #D4AF37;"></i> Property Amenities
+          </h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="box-shadow: none;"></button>
+        </div>
+        
+        <div class="modal-body p-4" id="amenitiesModalBody" style="max-height: 70vh; overflow-y: auto;">
+            </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openAmenitiesModal(propertyId, propertyTitle) {
+        const modal = new bootstrap.Modal(document.getElementById('globalAmenitiesModal'));
+        const modalTitle = document.getElementById('amenitiesModalTitle');
+        const modalBody = document.getElementById('amenitiesModalBody');
+
+        // Set title and loader
+        modalTitle.innerHTML = `<i class="fa-solid fa-gem mr-2" style="color: #D4AF37;"></i> Features: ${propertyTitle}`;
+        modalBody.innerHTML = '<div class="text-center py-5"><i class="fa-solid fa-circle-notch fa-spin fa-3x" style="color: #D4AF37;"></i><p class="mt-3 font-semibold text-gray-500">Loading premium features...</p></div>';
+        
+        modal.show();
+
+        // Fetch the data
+        fetch(`<?= base_url('ajax/get-amenities/') ?>${propertyId}`)
+            .then(response => response.json())
+            .then(data => {
+                modalBody.innerHTML = data.html; 
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                modalBody.innerHTML = '<div class="text-center py-5 text-danger"><i class="fa-solid fa-triangle-exclamation fa-2x mb-3"></i><br>Failed to load amenities. Please check your connection.</div>';
+            });
+    }
+  </script>
 </body>
 </html>

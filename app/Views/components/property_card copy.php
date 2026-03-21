@@ -9,31 +9,16 @@ $thumbnail = !empty($property->image_path) ? base_url($property->image_path) : b
 $displayPrice = 'Price on Request';
 if (!empty($property->prices)) {
     $priceObj = $property->prices[0];
-    $currency = esc(config('Site')->currency);
-    
-    // Check if there is a valid discount price
-    if (!empty($priceObj->discount_price) && $priceObj->discount_price > 0) {
-        // Show discount price prominently, then the original price slashed
-        $displayPrice = $currency . number_format($priceObj->discount_price) . 
-                        ' <s style="font-size: 13px; color: #a1a1aa; margin-left: 6px; font-weight: normal;">' . $currency . number_format($priceObj->price) . '</s>';
-    } else {
-        // Normal price display
-        $displayPrice = $currency . number_format($priceObj->price);
-    }
-
-    // Add the unit if it's not a one-time payment
+    $displayPrice = esc(config('Site')->currency) . number_format($priceObj->price);
     if ($priceObj->price_unit !== 'One Time') {
         $displayPrice .= ' <span style="font-size:12px; font-weight:normal; color:#666;">/' . esc($priceObj->price_unit) . '</span>';
     }
 }
-
-// Fallback for the slug if you haven't run the slug update on old database rows yet
-$linkUrl = !empty($property->slug) ? base_url('property/' . esc($property->slug)) : base_url('property/' . $property->id);
 ?>
 
 <div class="property-boxarea" data-aos="fade-up" data-aos-duration="800">
     <div class="img1 image-anime" style="height: 250px; overflow: hidden;">
-        <a href="<?= $linkUrl ?>">
+        <a href="<?= base_url('property/' . $property->id) ?>">
             <img src="<?= $thumbnail ?>" alt="<?= esc($property->title) ?>" style="width: 100%; height: 100%; object-fit: cover;">
         </a>
     </div>
@@ -41,7 +26,7 @@ $linkUrl = !empty($property->slug) ? base_url('property/' . esc($property->slug)
     <div class="category-list">
         <ul>
             <li>
-                <a href="javascript:void(0)" style="background: <?= $property->purpose === 'sale' ? '#D4AF37' : ($property->purpose === 'shortlet' ? '#6f42c1' : '#20c997') ?>; color: white;">
+                <a href="javascript:void(0)" style="background: <?= $property->purpose === 'sale' ? '#007bff' : ($property->purpose === 'shortlet' ? '#6f42c1' : '#20c997') ?>; color: white;">
                     For <?= ucfirst(esc($property->purpose)) ?>
                 </a>
             </li>
@@ -50,7 +35,7 @@ $linkUrl = !empty($property->slug) ? base_url('property/' . esc($property->slug)
     </div>
     
     <div class="content-area">
-        <a href="<?= $linkUrl ?>" class="text-truncate" style="display: block; max-width: 100%;" title="<?= esc($property->title) ?>">
+        <a href="<?= base_url('property/' . $property->id) ?>" class="text-truncate" style="display: block; max-width: 100%;" title="<?= esc($property->title) ?>">
             <?= esc($property->title) ?>
         </a>
         <div class="space18"></div>
@@ -64,13 +49,9 @@ $linkUrl = !empty($property->slug) ? base_url('property/' . esc($property->slug)
                 <li><a href="javascript:void(0)"><img src="<?= base_url('assets/img/icons/sqare1.svg') ?>" alt="Area"> <?= $property->area_sqm ?> sqm</a></li>
             <?php endif; ?>
         </ul>
-        <div class="mt-3 mb-1">
-            <button type="button" class="gold-pulse-btn w-100 justify-content-center" onclick="openAmenitiesModal(<?= $property->id ?>, '<?= esc(addslashes($property->title)) ?>')">
-                <i class="fa-solid fa-sparkles"></i> View All Amenities
-            </button>
-        </div>
+        
         <div class="btn-area">
-            <a href="<?= $linkUrl ?>" class="nm-btn"><?= $displayPrice ?></a>
+            <a href="<?= base_url('property/' . $property->id) ?>" class="nm-btn"><?= $displayPrice ?></a>
         </div>
     </div>
 </div>
