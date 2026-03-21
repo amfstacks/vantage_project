@@ -4,7 +4,7 @@
 
 <div class="hero-area-slider">
     <div class="hero1-section-area">
-      <img src="assets/img/all-images/hero/hero-img1.png" alt="housebox" class="hero-img1">
+      <img src="assets/img/all-images/hero/hero-img1.png" alt="<?= esc(config('Site')->siteName) ?>" class="hero-img1">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -32,7 +32,7 @@
     </div>
 
     <div class="hero1-section-area">
-      <img src="assets/img/all-images/hero/hero-img2.png" alt="housebox" class="hero-img1">
+      <img src="assets/img/all-images/hero/hero-img2.png" alt="<?= esc(config('Site')->siteName) ?>" class="hero-img1">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -60,7 +60,7 @@
     </div>
 
     <div class="hero1-section-area">
-      <img src="assets/img/all-images/hero/hero-img3.png" alt="housebox" class="hero-img1">
+      <img src="assets/img/all-images/hero/hero-img3.png" alt="<?= esc(config('Site')->siteName) ?>" class="hero-img1">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -90,7 +90,7 @@
 
 <!-- <div class="hero-area-slider">
   <div class="hero1-section-area">
-    <img src="<?= base_url('assets/img/all-images/hero/hero-img1.png') ?>" alt="housebox" class="hero-img1">
+    <img src="<?= base_url('assets/img/all-images/hero/hero-img1.png') ?>" alt="<?= esc(config('Site')->siteName) ?>" class="hero-img1">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -537,26 +537,26 @@
         <div class="col-lg-6">
           <div class="about-images-area">
             <div class="img2 image-anime reveal">
-              <img src="assets/img/all-images/about/about-img2.png" alt="housebox">
+              <img src="assets/img/all-images/about/about-img2.png" alt="<?= esc(config('Site')->siteName) ?>">
             </div>
             <div class="img1 image-anime reveal">
-              <img src="assets/img/all-images/about/about-img1.png" alt="housebox">
+              <img src="assets/img/all-images/about/about-img1.png" alt="<?= esc(config('Site')->siteName) ?>">
             </div>
             <div class="author-img aniamtion-key-1">
               <h3>Our Happy Customer</h3>
               <div class="space18"></div>
-              <img src="assets/img/all-images/others/author-img1.png" alt="housebox">
+              <img src="assets/img/all-images/others/author-img1.png" alt="<?= esc(config('Site')->siteName) ?>">
             </div>
           </div>
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-5">
           <div class="about-heading heading1">
-            <h5 data-aos="fade-left" data-aos-duration="800">About housebox</h5>
+            <h5 data-aos="fade-left" data-aos-duration="800">About <?= esc(config('Site')->siteName) ?></h5>
             <div class="space20"></div>
             <h2 class="text-anime-style-3">Embrace the Elegance Our Exclusive Property</h2>
             <div class="space18"></div>
-            <p data-aos="fade-left" data-aos-duration="900">At HouseBox, we’re redefining the way people find, sell, and invest in properties. Our mission is to simplify real a estate by provide innovative solutions, expert guidance.</p>
+            <p data-aos="fade-left" data-aos-duration="900">At <?= esc(config('Site')->siteName) ?>, we’re redefining the way people find, sell, and invest in properties. Our mission is to simplify real a estate by provide innovative solutions, expert guidance.</p>
             <div class="space32"></div>
             <div class="counter-boxes" data-aos="fade-left" data-aos-duration="1000">
               <div class="row">
@@ -682,16 +682,16 @@
                           <div class="swiper swiper-fade">
                             <div class="swiper-wrapper">
                               <div class="swiper-slide">
-                                <img src="assets/img/all-images/properties/property-img2.png" alt="housebox">
+                                <img src="assets/img/all-images/properties/property-img2.png" alt="<?= esc(config('Site')->siteName) ?>">
                               </div>
                               <div class="swiper-slide">
-                                <img src="assets/img/all-images/properties/property-img1.png" alt="housebox">
+                                <img src="assets/img/all-images/properties/property-img1.png" alt="<?= esc(config('Site')->siteName) ?>">
                               </div>
                               <div class="swiper-slide">
-                                <img src="assets/img/all-images/properties/property-img3.png" alt="housebox">
+                                <img src="assets/img/all-images/properties/property-img3.png" alt="<?= esc(config('Site')->siteName) ?>">
                               </div>
                               <div class="swiper-slide">
-                                <img src="assets/img/all-images/properties/property-img4.png" alt="housebox">
+                                <img src="assets/img/all-images/properties/property-img4.png" alt="<?= esc(config('Site')->siteName) ?>">
                               </div>
                             </div>
                             <div class="swiper-pagination"></div>
@@ -709,13 +709,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x12</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x16</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x12</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x16</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -728,13 +728,13 @@
                           <div class="swiper swiper-fade">
                             <div class="swiper-wrapper">
                               <div class="swiper-slide">
-                                <img src="assets/img/all-images/properties/property-img4.png" alt="housebox">
+                                <img src="assets/img/all-images/properties/property-img4.png" alt="<?= esc(config('Site')->siteName) ?>">
                               </div>
                               <div class="swiper-slide">
-                                <img src="assets/img/all-images/properties/property-img2.png" alt="housebox">
+                                <img src="assets/img/all-images/properties/property-img2.png" alt="<?= esc(config('Site')->siteName) ?>">
                               </div>
                               <div class="swiper-slide">
-                                <img src="assets/img/all-images/properties/property-img6.png" alt="housebox">
+                                <img src="assets/img/all-images/properties/property-img6.png" alt="<?= esc(config('Site')->siteName) ?>">
                               </div>
                             </div>
                             <div class="swiper-pagination"></div>
@@ -752,13 +752,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x20</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x30</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x20</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x30</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -770,13 +770,13 @@
                           <div class="swiper swiper-fade">
                             <div class="swiper-wrapper">
                               <div class="swiper-slide">
-                                <img src="assets/img/all-images/properties/property-img5.png" alt="housebox">
+                                <img src="assets/img/all-images/properties/property-img5.png" alt="<?= esc(config('Site')->siteName) ?>">
                               </div>
                               <div class="swiper-slide">
-                                <img src="assets/img/all-images/properties/property-img3.png" alt="housebox">
+                                <img src="assets/img/all-images/properties/property-img3.png" alt="<?= esc(config('Site')->siteName) ?>">
                               </div>
                               <div class="swiper-slide">
-                                <img src="assets/img/all-images/properties/property-img2.png" alt="housebox">
+                                <img src="assets/img/all-images/properties/property-img2.png" alt="<?= esc(config('Site')->siteName) ?>">
                               </div>
                             </div>
                             <div class="swiper-pagination"></div>
@@ -794,13 +794,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x23</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x34</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x23</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x34</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -812,7 +812,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img1.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img1.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -826,13 +826,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x20</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x30</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x20</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x30</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -841,7 +841,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img2.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img2.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -855,13 +855,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x12</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x16</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x12</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x16</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -871,7 +871,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img3.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img3.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -885,13 +885,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x23</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x34</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x23</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x34</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -900,7 +900,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img4.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img4.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -914,13 +914,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x20</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x30</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x20</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x30</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -930,7 +930,7 @@
 
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img5.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img5.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -944,13 +944,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x12</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x16</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x12</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x16</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -959,7 +959,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img6.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img6.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -973,13 +973,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x23</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x34</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x23</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x34</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -991,7 +991,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img1.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img1.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1005,13 +1005,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x20</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x30</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x20</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x30</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1020,7 +1020,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img2.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img2.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1034,13 +1034,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x12</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x16</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x12</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x16</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1050,7 +1050,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img3.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img3.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1064,13 +1064,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x23</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x34</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x23</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x34</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1079,7 +1079,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img4.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img4.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1093,13 +1093,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x20</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x30</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x20</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x30</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1109,7 +1109,7 @@
 
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img5.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img5.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1123,13 +1123,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x12</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x16</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x12</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x16</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1138,7 +1138,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img6.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img6.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1152,13 +1152,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x23</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x34</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x23</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x34</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1170,7 +1170,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img1.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img1.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1184,13 +1184,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x20</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x30</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x20</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x30</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1199,7 +1199,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img2.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img2.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1213,13 +1213,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x12</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x16</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x12</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x16</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1229,7 +1229,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img3.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img3.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1243,13 +1243,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x23</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x34</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x23</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x34</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1258,7 +1258,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img4.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img4.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1272,13 +1272,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x20</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x30</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x20</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x30</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1288,7 +1288,7 @@
 
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img5.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img5.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1302,13 +1302,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x12</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x16</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x12</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x16</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1317,7 +1317,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img6.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img6.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1331,13 +1331,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x23</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x34</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x23</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x34</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1349,7 +1349,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img1.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img1.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1363,13 +1363,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x20</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x30</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x20</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x30</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1378,7 +1378,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img2.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img2.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1392,13 +1392,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x12</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x16</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x12</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x16</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1408,7 +1408,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img3.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img3.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1422,13 +1422,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x23</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x34</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x23</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x34</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1437,7 +1437,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img4.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img4.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1451,13 +1451,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x20</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x30</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x20</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x30</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1467,7 +1467,7 @@
 
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img5.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img5.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1481,13 +1481,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x12</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x16</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x12</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x16</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1496,7 +1496,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img6.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img6.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1510,13 +1510,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x23</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x34</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x23</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x34</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1528,7 +1528,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img1.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img1.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1542,13 +1542,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x20</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x30</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x20</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x30</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1557,7 +1557,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img2.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img2.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1571,13 +1571,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x12</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x16</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x12</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x16</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1587,7 +1587,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img3.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img3.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1601,13 +1601,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x23</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x34</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x23</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x34</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1616,7 +1616,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img4.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img4.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1630,13 +1630,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x20</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x30</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x20</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x30</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1646,7 +1646,7 @@
 
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img5.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img5.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1660,13 +1660,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x12</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x16</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x12</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x16</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1675,7 +1675,7 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="property-boxarea">
                         <div class="img1 image-anime">
-                          <img src="assets/img/all-images/properties/property-img6.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img6.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="category-list">
                           <ul>
@@ -1689,13 +1689,13 @@
                           <p>Los Angeles City, CA, USA</p>
                           <div class="space24"></div>
                           <ul>
-                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x23</a></li>
-                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x34</a></li>
-                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x23</a></li>
+                            <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x34</a></li>
+                            <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                           </ul>
                           <div class="btn-area">
                             <a href="#" class="nm-btn">$820,000</a>
-                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                            <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                           </div>
                         </div>
                       </div>
@@ -1722,7 +1722,7 @@
             <div class="space20"></div>
             <h2 class="text-anime-style-3">Our Featured Items</h2>
             <div class="space16"></div>
-            <p data-aos="fade-left" data-aos-duration="900">At HouseBox, we’re redefining the way peoples find, sell, and invest the properties, our mission.</p>
+            <p data-aos="fade-left" data-aos-duration="900">At <?= esc(config('Site')->siteName) ?>, we’re redefining the way peoples find, sell, and invest the properties, our mission.</p>
             <div class="space28"></div>
             <div class="btn-area1" data-aos="fade-left" data-aos-duration="1000">
               <a href="sidebar-grid.html" class="theme-btn1">See All Properties <span class="arrow1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
@@ -1825,10 +1825,10 @@
             <div class="col-lg-5">
               <div class="images-area">
                 <div class="img1 image-anime">
-                  <img src="assets/img/all-images/items/item-img1.png" alt="housebox">
+                  <img src="assets/img/all-images/items/item-img1.png" alt="<?= esc(config('Site')->siteName) ?>">
                 </div>
                 <div class="img1 image-anime">
-                  <img src="assets/img/all-images/items/item-img1.png" alt="housebox">
+                  <img src="assets/img/all-images/items/item-img1.png" alt="<?= esc(config('Site')->siteName) ?>">
                 </div>
               </div>
             </div>
@@ -1850,15 +1850,15 @@
                       </svg> 742 Terrace, Springfield, IL 62704, USA</p>
                     <div class="space24"></div>
                     <ul>
-                      <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x12 Beds</a></li>
-                      <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x16 Baths</a></li>
-                      <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                      <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x12 Beds</a></li>
+                      <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x16 Baths</a></li>
+                      <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                     </ul>
                     <div class="space32"></div>
                     <div class="btn-area">
                       <div class="name-area">
                         <div class="img">
-                          <img src="assets/img/all-images/properties/property-img8.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img8.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="text">
                           <a href="#">Alex Roberts</a>
@@ -1866,7 +1866,7 @@
                       </div>
                       <div class="space20 d-md-none d-block"></div>
                       <div class="btn-area">
-                        <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                        <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                         <a href="#" class="nm-btn">$820,000</a>
                       </div>
                     </div>
@@ -1888,15 +1888,15 @@
                       </svg> 742 Terrace, Springfield, IL 62704, USA</p>
                     <div class="space24"></div>
                     <ul>
-                      <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="housebox">x12 Beds</a></li>
-                      <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="housebox">x16 Baths</a></li>
-                      <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="housebox">1200 sq</a></li>
+                      <li><a href="#"><img src="assets/img/icons/bed1.svg" alt="<?= esc(config('Site')->siteName) ?>">x12 Beds</a></li>
+                      <li><a href="#"><img src="assets/img/icons/bath1.svg" alt="<?= esc(config('Site')->siteName) ?>">x16 Baths</a></li>
+                      <li><a href="#"><img src="assets/img/icons/sqare1.svg" alt="<?= esc(config('Site')->siteName) ?>">1200 sq</a></li>
                     </ul>
                     <div class="space32"></div>
                     <div class="btn-area">
                       <div class="name-area">
                         <div class="img">
-                          <img src="assets/img/all-images/properties/property-img8.png" alt="housebox">
+                          <img src="assets/img/all-images/properties/property-img8.png" alt="<?= esc(config('Site')->siteName) ?>">
                         </div>
                         <div class="text">
                           <a href="#">Alex Roberts</a>
@@ -1904,7 +1904,7 @@
                       </div>
                       <div class="space20 d-md-none d-block"></div>
                       <div class="btn-area">
-                        <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="housebox" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="housebox" class="heart2"></a>
+                        <a href="javascript:void(0)" class="heart"><img src="assets/img/icons/heart1.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart1"> <img src="assets/img/icons/heart2.svg" alt="<?= esc(config('Site')->siteName) ?>" class="heart2"></a>
                         <a href="#" class="nm-btn">$820,000</a>
                       </div>
                     </div>
@@ -1946,7 +1946,7 @@
           <div class="property-single-slider owl-carousel">
             <div class="propety-single-boxarea">
               <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img1.png" alt="housebox">
+                <img src="assets/img/all-images/property_location/property-img1.png" alt="<?= esc(config('Site')->siteName) ?>">
               </div>
               <h3>32</h3>
               <a href="property-details-v1.html">San Francisco</a>
@@ -1954,7 +1954,7 @@
 
             <div class="propety-single-boxarea">
               <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img2.png" alt="housebox">
+                <img src="assets/img/all-images/property_location/property-img2.png" alt="<?= esc(config('Site')->siteName) ?>">
               </div>
               <h3>12</h3>
               <a href="property-details-v1.html">Los Angeles</a>
@@ -1962,7 +1962,7 @@
 
             <div class="propety-single-boxarea">
               <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img3.png" alt="housebox">
+                <img src="assets/img/all-images/property_location/property-img3.png" alt="<?= esc(config('Site')->siteName) ?>">
               </div>
               <h3>15</h3>
               <a href="property-details-v1.html">New York</a>
@@ -1970,7 +1970,7 @@
 
             <div class="propety-single-boxarea">
               <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img4.png" alt="housebox">
+                <img src="assets/img/all-images/property_location/property-img4.png" alt="<?= esc(config('Site')->siteName) ?>">
               </div>
               <h3>40</h3>
               <a href="property-details-v1.html">San Diego</a>
@@ -1978,14 +1978,14 @@
 
             <div class="propety-single-boxarea">
               <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img5.png" alt="housebox">
+                <img src="assets/img/all-images/property_location/property-img5.png" alt="<?= esc(config('Site')->siteName) ?>">
               </div>
               <h3>19</h3>
               <a href="property-details-v1.html">Dallas Texas</a>
             </div>
             <div class="propety-single-boxarea">
               <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img1.png" alt="housebox">
+                <img src="assets/img/all-images/property_location/property-img1.png" alt="<?= esc(config('Site')->siteName) ?>">
               </div>
               <h3>32</h3>
               <a href="property-details-v1.html">San Francisco</a>
@@ -1993,7 +1993,7 @@
 
             <div class="propety-single-boxarea">
               <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img2.png" alt="housebox">
+                <img src="assets/img/all-images/property_location/property-img2.png" alt="<?= esc(config('Site')->siteName) ?>">
               </div>
               <h3>12</h3>
               <a href="property-details-v1.html">Los Angeles</a>
@@ -2001,7 +2001,7 @@
 
             <div class="propety-single-boxarea">
               <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img3.png" alt="housebox">
+                <img src="assets/img/all-images/property_location/property-img3.png" alt="<?= esc(config('Site')->siteName) ?>">
               </div>
               <h3>15</h3>
               <a href="property-details-v1.html">New York</a>
@@ -2009,7 +2009,7 @@
 
             <div class="propety-single-boxarea">
               <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img4.png" alt="housebox">
+                <img src="assets/img/all-images/property_location/property-img4.png" alt="<?= esc(config('Site')->siteName) ?>">
               </div>
               <h3>40</h3>
               <a href="property-details-v1.html">San Diego</a>
@@ -2017,7 +2017,7 @@
 
             <div class="propety-single-boxarea">
               <div class="img1 image-anime">
-                <img src="assets/img/all-images/property_location/property-img5.png" alt="housebox">
+                <img src="assets/img/all-images/property_location/property-img5.png" alt="<?= esc(config('Site')->siteName) ?>">
               </div>
               <h3>19</h3>
               <a href="property-details-v1.html">Dallas Texas</a>
@@ -2038,9 +2038,9 @@
             <div class="row align-items-center">
               <div class="col-lg-5">
                 <div class="cta-header">
-                  <h2 class="text-anime-style-3">Step Into Your Dream Home with HouseBox</h2>
+                  <h2 class="text-anime-style-3">Step Into Your Dream Home with <?= esc(config('Site')->siteName) ?></h2>
                   <div class="space16"></div>
-                  <p data-aos="fade-left" data-aos-duration="1000">At HouseBox, we believe your next home is more than just a place – it’s where your future begins you’re buy.</p>
+                  <p data-aos="fade-left" data-aos-duration="1000">At <?= esc(config('Site')->siteName) ?>, we believe your next home is more than just a place – it’s where your future begins you’re buy.</p>
                 </div>
               </div>
               <div class="col-lg-2"></div>

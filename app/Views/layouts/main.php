@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?= esc($title ?? '  Real Estate') ?></title>
+  <title><?= esc(config('Site')->siteName) ?></title>
 
   <link rel="shortcut icon" href="<?= base_url('assets/img/logo/fav-logo1.png') ?>" type="image/x-icon">
 
@@ -28,7 +28,7 @@
   <div class="preloader">
     <div class="loading-container">
       <div class="loading"></div>
-      <div id="loading-icon"><img src="<?= base_url('assets/img/logo/preloader.png') ?>" alt="housebox"></div>
+      <div id="loading-icon"><img src="<?= base_url('assets/img/logo/preloader.png') ?>" alt="<?= esc(config('Site')->siteName) ?>"></div>
     </div>
   </div>
 
@@ -62,7 +62,7 @@
           <div class="col-lg-12">
             <div class="header-top-area">
               <ul class="header-content">
-                <li><a href="mailto:info@housebox.com"><i class="fa-solid fa-envelope"></i> info@housebox.com</a> <span> | </span></li>
+                <li><a href="mailto:info@<?= esc(config('Site')->siteName) ?>.com"><i class="fa-solid fa-envelope"></i> info@<?= esc(config('Site')->siteName) ?>.com</a> <span> | </span></li>
                 <li><a href="tel:(234)345-4574"><i class="fa-solid fa-phone"></i> (234) 345-4574</a></li>
               </ul>
               <ul class="list-content">
@@ -75,7 +75,9 @@
             </div>
             <div class="header-elements">
               <div class="site-logo">
-                <a href="<?= base_url() ?>"><img src="<?= base_url('assets/img/logo/logo1.png') ?>" alt="housebox"></a>
+                <a href="<?= base_url() ?>">
+                <?= view('components/logo', ['width' => '180px', 'class' => 'img-fluid']) ?>  
+                <!-- <img src="<?= base_url('assets/img/logo/logo1.png') ?>" alt="<?= esc(config('Site')->siteName) ?>"></a> -->
               </div>
               <div class="main-menu">
                 <ul>
@@ -103,7 +105,7 @@
       <div class="col-12">
         <div class="mobile-header-elements">
           <div class="mobile-logo">
-            <a href="<?= base_url() ?>"><img src="<?= base_url('assets/img/logo/logo1.png') ?>" alt="housebox"></a>
+            <a href="<?= base_url() ?>"><img src="<?= base_url('assets/img/logo/logo1.png') ?>" alt="<?= esc(config('Site')->siteName) ?>"></a>
           </div>
           <div class="mobile-right d-flex gap-1 align-items-center">
             <a class="circle-button user-icon" href="<?= base_url('admin/dashboard') ?>"><i class="fa-solid fa-user"></i></a>
@@ -117,7 +119,7 @@
   <div class="mobile-sidebar mobile-sidebar1">
     <div class="logosicon-area">
       <div class="logos">
-        <img src="<?= base_url('assets/img/logo/logo1.png') ?>" alt="housebox">
+        <img src="<?= base_url('assets/img/logo/logo1.png') ?>" alt="<?= esc(config('Site')->siteName) ?>">
       </div>
       <div class="menu-close"><i class="fa-solid fa-xmark text-2xl"></i></div>
     </div>
@@ -141,7 +143,8 @@
       <div class="row">
         <div class="col-lg-4 col-md-6">
           <div class="footer-logoarea">
-            <img src="<?= base_url('assets/img/logo/logo1.png') ?>" alt="housebox">
+            <!-- <img src="<?= base_url('assets/img/logo/logo1.png') ?>" alt="<?= esc(config('Site')->siteName) ?>"> -->
+            <?= view('components/logo', ['width' => '220px', 'class' => 'footer-brand']) ?>
             <div class="space24"></div>
             <p>Your trusted real estate partner. We simplify the way people find, sell, and invest in properties.</p>
             <div class="space24"></div>
@@ -173,7 +176,7 @@
             <ul>
               <li><a href="tel:(234)345-4574"><i class="fa-solid fa-phone mr-2"></i> (234) 345-4574</a></li>
               <li><a href="#"><i class="fa-solid fa-map-marker-alt mr-2"></i> 123 Real Estate Ave, Abuja, Nigeria</a></li>
-              <li><a href="mailto:info@housebox.com"><i class="fa-solid fa-envelope mr-2"></i> info@housebox.com</a></li>
+              <li><a href="mailto:info@<?= esc(config('Site')->siteName) ?>.com"><i class="fa-solid fa-envelope mr-2"></i> info@<?= esc(config('Site')->siteName) ?>.com</a></li>
             </ul>
           </div>
         </div>
@@ -182,7 +185,7 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="copyright text-center">
-            <p>©Copyright <?= date('Y') ?> - Housebox Platform. All Rights Reserved.</p>
+            <p>©Copyright <?= date('Y') ?> - <?= esc(config('Site')->siteName) ?> Platform. All Rights Reserved.</p>
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ class Site extends BaseConfig
     public string $contactEmail = 'support@Vantage.com';
     public string $contactPhone = '+234 800 000 0000';
     public string $address      = '123 Real Estate Avenue, Abuja, FCT';
+    public string $logoPath     = 'assets/img/logo/logo1.png';
     
     // Social Links
     public string $facebookUrl  = 'https://facebook.com/Vantage';
