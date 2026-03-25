@@ -56,8 +56,9 @@ class PropertyManager extends BaseController
         $properties = $this->propertyModel
             ->select('properties.*, property_images.image_path')
             ->join('property_images', 'property_images.property_id = properties.id AND property_images.is_primary = 1', 'left')
+            ->groupBy('properties.id')
             ->orderBy('properties.created_at', 'DESC')
-            ->paginate(10);
+            ->paginate(10); 
 
         // NEW: Fetch dynamic prices for these specific properties
         if (!empty($properties)) {

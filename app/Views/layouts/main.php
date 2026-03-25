@@ -4,7 +4,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?= esc(config('Site')->siteName) ?></title>
+
+  <title><?= isset($title) ? esc($title) . ' | ' : '' ?><?= esc(config('Site')->siteName) ?></title>
+
+
+  <meta name="description" content="<?= esc($meta_description ?? 'Discover premium real estate, luxury apartments, and exclusive properties with ' . config('Site')->siteName . '.') ?>">
+  <meta name="author" content="Ajala Mayowa Felix">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="<?= current_url() ?>">
+  <meta property="og:title" content="<?= esc($title ?? config('Site')->siteName) ?>">
+  <meta property="og:description" content="<?= esc($meta_description ?? 'Discover premium real estate and exclusive properties.') ?>">
+  <meta property="og:image" content="<?= esc($og_image ?? base_url('assets/img/logo/logo1.png')) ?>">
+
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="<?= current_url() ?>">
+  <meta property="twitter:title" content="<?= esc($title ?? config('Site')->siteName) ?>">
+  <meta property="twitter:description" content="<?= esc($meta_description ?? 'Discover premium real estate and exclusive properties.') ?>">
+  <meta property="twitter:image" content="<?= esc($og_image ?? base_url('assets/img/logo/logo1.png')) ?>">
+
+  <link rel="shortcut icon" href="<?= base_url('assets/img/logo/fav-logo1.png') ?>" type="image/x-icon">
 
   <link rel="shortcut icon" href="<?= base_url('assets/img/logo/fav-logo1.png') ?>" type="image/x-icon">
 
@@ -44,7 +63,7 @@
   <div class="header-search-form-wrapper">
     <div class="tx-search-close tx-close"><i class="fa-solid fa-xmark"></i></div>
     <div class="header-search-container">
-      <form role="search" action="<?= base_url('search') ?>" method="GET" class="search-form">
+      <form role="search" action="<?= base_url('properties') ?>" method="GET" class="search-form">
         <input type="search" class="search-field" placeholder="Search properties…" value="" name="q">
         <button type="submit" class="search-submit">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -69,7 +88,7 @@
               <ul class="list-content">
                 <li>
                   <a href="<?= base_url('admin/dashboard') ?>" class="signin"><span> | </span>
-                    <i class="fa-solid fa-user text-white"></i> Login / Portal
+                    <i class="fa-solid fa-user text-white"></i> SIGN IN
                   </a>
                 </li>
               </ul>
@@ -175,8 +194,8 @@
             <h3>Contact Us</h3>
             <div class="space4"></div>
             <ul>
-              <li><a href="tel:(234)345-4574"><i class="fa-solid fa-phone mr-2"></i> (234) 345-4574</a></li>
-              <li><a href="#"><i class="fa-solid fa-map-marker-alt mr-2"></i> 123 Real Estate Ave, Abuja, Nigeria</a></li>
+              <li><a href="#"><i class="fa-solid fa-phone mr-2"></i> <?= esc(config('Site')->contactPhone) ?></a></li>
+              <li><a href="#"><i class="fa-solid fa-map-marker-alt mr-2"></i> <?= esc(config('Site')->address) ?></a></li>
               <li><a href="mailto:info@<?= esc(config('Site')->siteName) ?>.com"><i class="fa-solid fa-envelope mr-2"></i> info@<?= esc(config('Site')->siteName) ?>.com</a></li>
             </ul>
           </div>

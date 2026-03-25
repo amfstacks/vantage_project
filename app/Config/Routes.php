@@ -17,6 +17,7 @@ $routes->get('ajax/get-amenities/(:num)', 'Frontend\PropertyAjax::getAmenities/$
 $routes->get('ajax/load-recent-properties', 'Frontend\PropertyAjax::loadRecentProperties');
 $routes->get('ajax/load-locations', 'Frontend\PropertyAjax::loadLocations');
 $routes->get('properties', 'Frontend\Properties::index');
+$routes->get('property/(:segment)', 'Frontend\Properties::show/$1');
 
 
 // Protected Admin Routes (Grouped with the filter)

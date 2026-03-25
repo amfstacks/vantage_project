@@ -104,7 +104,7 @@
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
             <div class="flex items-center justify-between mb-6 border-b border-gray-50 pb-4">
                 <h3 class="text-lg font-bold text-gray-900">2. Pricing Strategy</h3>
-                <button type="button" id="addPriceBtn" class="text-sm font-bold text-indigo-600 hover:text-indigo-800 bg-indigo-50 px-3 py-1.5 rounded-md transition-colors">
+                <button type="button" id="addPriceBtn" class="text-sm font-bold text-yellow-600 hover:text-yellow-800 bg-yellow-50 px-3 py-1.5 rounded-md transition-colors">
                     <i class="fas fa-plus mr-1"></i> Add Pricing Option
                 </button>
             </div>
@@ -222,7 +222,7 @@
                     <div class="relative group aspect-square rounded-xl overflow-hidden border border-gray-200 shadow-sm">
                         <img src="<?= base_url($img->image_path) ?>" class="w-full h-full object-cover">
                         <?php if($img->is_primary): ?>
-                            <span class="absolute top-2 left-2 bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">COVER</span>
+                            <span class="absolute top-2 left-2 bg-yellow-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">COVER</span>
                         <?php endif; ?>
                         <a href="<?= base_url('admin/properties/delete-image/' . $img->id) ?>" onclick="return confirm('Delete this image?');" class="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-7 h-7 flex items-center justify-center shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             <i class="fas fa-trash text-xs"></i>
@@ -237,11 +237,11 @@
             <div class="space-y-6">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Property Images (Select Multiple) <span class="text-red-500">*</span></label>
-                    <div class="relative flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl hover:border-indigo-500 hover:bg-indigo-50 transition-colors bg-gray-50">
+                    <div class="relative flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl hover:border-indigo-500 hover:bg-yellow-50 transition-colors bg-gray-50">
                         <div class="space-y-1 text-center">
                             <i class="fas fa-images text-3xl text-gray-400 mb-2"></i>
                             <div class="flex text-sm text-gray-600 justify-center">
-                                <label for="images" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 px-2 py-1 shadow-sm border border-gray-200">
+                                <label for="images" class="relative cursor-pointer bg-white rounded-md font-medium text-yellow-600 hover:text-yellow-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 px-2 py-1 shadow-sm border border-gray-200">
                                     <span>Upload files</span>
                                     <input id="images" name="images[]" type="file" multiple accept="image/jpeg, image/png, image/webp" class="sr-only">
                                 </label>
@@ -264,7 +264,7 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Matterport / 3D Tour URL</label>
                         <div class="flex rounded-md shadow-sm">
-                            <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50"><i class="fas fa-vr-cardboard text-indigo-500"></i></span>
+                            <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50"><i class="fas fa-vr-cardboard text-yellow-500"></i></span>
                             <input type="url" name="virtual_tour_url" value="<?= old('virtual_tour_url', $property->virtual_tour_url ?? '') ?>" placeholder="https://my.matterport.com/show/?m=..." class="flex-1 w-full px-4 py-2 rounded-r-md border border-gray-300 focus:ring-indigo-500 text-sm">
                         </div>
                     </div>
@@ -279,24 +279,24 @@
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
             <div class="flex items-center justify-between mb-6 border-b border-gray-50 pb-4">
                 <h3 class="text-lg font-bold text-gray-900">6. Amenities</h3>
-                <label class="flex items-center cursor-pointer text-sm font-bold text-indigo-600 hover:text-indigo-800 transition-colors bg-indigo-50 px-3 py-1.5 rounded-md">
-                    <input type="checkbox" id="selectAllAmenities" class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mr-2"> Select All
+                <label class="flex items-center cursor-pointer text-sm font-bold text-yellow-600 hover:text-yellow-800 transition-colors bg-yellow-50 px-3 py-1.5 rounded-md">
+                    <input type="checkbox" id="selectAllAmenities" class="rounded border-gray-300 text-yellow-600 focus:ring-indigo-500 mr-2"> Select All
                 </label>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <?php if(!empty($amenities)): ?>
                     <?php foreach($amenities as $amenity): ?>
-                        <label class="relative flex items-start p-3 border border-gray-200 rounded-xl cursor-pointer hover:bg-indigo-50 transition-all group has-[:checked]:bg-indigo-50 has-[:checked]:border-indigo-500">
+                        <label class="relative flex items-start p-3 border border-gray-200 rounded-xl cursor-pointer hover:bg-yellow-50 transition-all group has-[:checked]:bg-yellow-50 has-[:checked]:border-indigo-500">
                             <div class="flex items-center h-5">
 <input type="checkbox" name="amenities[]" value="<?= $amenity->id ?>" 
     <?= (isset($selectedAmenities) && in_array($amenity->id, $selectedAmenities)) ? 'checked' : '' ?> 
-    class="amenity-checkbox rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+    class="amenity-checkbox rounded border-gray-300 text-yellow-600 focus:ring-indigo-500">
                             </div>
                             <div class="ml-3 text-sm flex items-center gap-2">
                                 <?php if($amenity->icon): ?>
-                                    <i class="<?= esc($amenity->icon) ?> text-gray-400 group-has-[:checked]:text-indigo-600"></i>
+                                    <i class="<?= esc($amenity->icon) ?> text-gray-400 group-has-[:checked]:text-yellow-600"></i>
                                 <?php endif; ?>
-                                <span class="font-medium text-gray-700 group-has-[:checked]:text-indigo-900"><?= esc($amenity->name) ?></span>
+                                <span class="font-medium text-gray-700 group-has-[:checked]:text-yellow-900"><?= esc($amenity->name) ?></span>
                             </div>
                         </label>
                     <?php endforeach; ?>
@@ -310,7 +310,7 @@
                 <button type="submit" name="action" value="draft" class="flex-1 sm:flex-none px-6 py-3 bg-white border border-gray-300 text-gray-700 font-bold rounded-xl hover:bg-gray-50 focus:ring-4 focus:ring-gray-100 transition-all shadow-sm">
                     <i class="fas fa-save mr-2"></i> Save as Draft
                 </button>
-                <button type="submit" name="action" value="publish" class="flex-1 sm:flex-none px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-200 transition-all shadow-md transform hover:-translate-y-0.5">
+                <button type="submit" name="action" value="publish" class="flex-1 sm:flex-none px-8 py-3 bg-yellow-600 text-white font-bold rounded-xl hover:bg-yellow-700 focus:ring-4 focus:ring-indigo-200 transition-all shadow-md transform hover:-translate-y-0.5">
                     <i class="fas fa-paper-plane mr-2"></i> Publish Listing
                 </button>
             </div>

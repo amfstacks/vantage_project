@@ -33,7 +33,7 @@
                     <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Active Shortlets</p>
                     <p class="text-3xl font-extrabold text-gray-900 mt-2"><?= number_format($activeShortlets) ?></p>
                 </div>
-                <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600">
+                <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-yellow-600">
                     <i class="fas fa-key text-xl"></i>
                 </div>
             </div>
@@ -69,7 +69,7 @@
     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <div class="px-6 py-5 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
             <h3 class="text-lg font-bold text-gray-900">Recent Platform Activity</h3>
-            <a href="<?= base_url('admin/properties') ?>" class="text-sm font-bold text-indigo-600 hover:text-indigo-800 transition-colors">View All &rarr;</a>
+            <a href="<?= base_url('admin/properties') ?>" class="text-sm font-bold text-yellow-600 hover:text-yellow-800 transition-colors">View All &rarr;</a>
         </div>
         <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse">
@@ -111,7 +111,7 @@
                                     <?php if ($property->purpose === 'sale'): ?>
                                         <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-md text-xs font-bold border border-blue-100">Sale</span>
                                     <?php elseif ($property->purpose === 'shortlet'): ?>
-                                        <span class="bg-purple-50 text-purple-700 px-3 py-1 rounded-md text-xs font-bold border border-purple-100">Shortlet</span>
+                                        <span class="bg-purple-50 text-yellow-700 px-3 py-1 rounded-md text-xs font-bold border border-purple-100">Shortlet</span>
                                     <?php else: ?>
                                         <span class="bg-teal-50 text-teal-700 px-3 py-1 rounded-md text-xs font-bold border border-teal-100">Rent</span>
                                     <?php endif; ?>
@@ -130,7 +130,7 @@
                                 </td>
                                 
                                 <td class="px-6 py-4 text-right">
-                                    <a href="<?= base_url('admin/properties/edit/' . $property->id) ?>" class="text-gray-400 hover:text-indigo-600 transition-colors p-1" title="Edit">
+                                    <a href="<?= base_url('admin/properties/edit/' . $property->id) ?>" class="text-gray-400 hover:text-yellow-600 transition-colors p-1" title="Edit">
                                         <i class="fas fa-edit text-sm"></i>
                                     </a>
                                 </td>

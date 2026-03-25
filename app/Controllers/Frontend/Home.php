@@ -39,7 +39,7 @@ class Home extends BaseController
         }
 
         $data = [
-            'title' => 'HouseBox - Find Your Perfect Home',
+            'title' => config('Site')->siteName .'- Find Your Perfect property',
             'featuredProperties' => $properties
         ];
 

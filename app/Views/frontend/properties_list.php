@@ -7,6 +7,20 @@
 <br>
 <br>
 <br>
+<div class="hero-inner-section-area-sidebar">
+    <img src="assets/img/all-images/hero/hero-img1.png" alt="housebox" class="hero-img1">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="hero-header-area text-center">
+            
+            <div class="space24"></div>
+            <h1>Properties Listing</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <div class="property-inner-section-find sp1">
     <div class="container">
         

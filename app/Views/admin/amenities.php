@@ -42,7 +42,7 @@
     <label for="icon" class="block text-sm font-medium text-gray-700 mb-1">FontAwesome Class (Optional)</label>
     <input type="text" name="icon" id="amenity_icon" placeholder="e.g., fas fa-wifi, fab fa-netflix"
         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors sm:text-sm">
-    <p class="text-xs text-gray-400 mt-1">Search free icons at <a href="https://fontawesome.com/search?o=r&m=free" target="_blank" class="text-indigo-500 hover:underline">fontawesome.com</a></p>
+    <p class="text-xs text-gray-400 mt-1">Search free icons at <a href="https://fontawesome.com/search?o=r&m=free" target="_blank" class="text-yellow-500 hover:underline">fontawesome.com</a></p>
 </div>
 
                     <div class="pt-2 flex gap-3">
@@ -80,7 +80,7 @@
                             <?php else: ?>
                                 <?php foreach ($amenities as $amenity): ?>
                                     <tr class="hover:bg-gray-50 transition-colors group">
-                                       <td class="px-6 py-4 text-center text-indigo-500 text-lg">
+                                       <td class="px-6 py-4 text-center text-yellow-500 text-lg">
     <?php if ($amenity->icon): ?>
         <i class="<?= esc($amenity->icon) ?>"></i>
     <?php else: ?>
@@ -92,7 +92,7 @@
                                         </td>
                                         <td class="px-6 py-4 text-right space-x-2">
                                             <button onclick="editAmenity(<?= $amenity->id ?>, '<?= esc(addslashes($amenity->name)) ?>', '<?= esc(addslashes($amenity->icon)) ?>')" 
-                                                    class="text-gray-400 hover:text-indigo-600 transition-colors p-1" title="Edit">
+                                                    class="text-gray-400 hover:text-yellow-600 transition-colors p-1" title="Edit">
                                                <i class="fas fa-pen"></i>
                                             </button>
                                             

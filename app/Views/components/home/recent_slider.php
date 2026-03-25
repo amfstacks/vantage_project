@@ -69,20 +69,21 @@
                         
                         <div class="btn-area d-flex align-items-center justify-content-between">
                           <div class="name-area d-flex align-items-center">
-                            <div class="img mr-3">
+                            <!-- <div class="img mr-3">
                               <div style="width: 50px; height: 50px; border-radius: 50%; background: #f1f1f1; display:flex; align-items:center; justify-content:center; border: 2px solid #D4AF37;">
                                   <i class="fa-solid fa-user-tie text-gray-500"></i>
                               </div>
-                            </div>
+                            </div> -->
+                             <button type="button" class="gold-pulse-btn mr-3" onclick="openAmenitiesModal(<?= $prop->id ?>, '<?= esc(addslashes($prop->title)) ?>')">
+                                <i class="fa-solid fa-sparkles mr-2"></i> View Amenities
+                            </button>
                             <div class="text">
-                              <a href="javascript:void(0)" class="font-bold">Verified Agent</a>
+                              <!-- <a href="javascript:void(0)" class="font-bold">Verified Agent</a> -->
                             </div>
                           </div>
                           
                           <div class="btn-area">
-                            <button type="button" class="gold-pulse-btn mr-3" onclick="openAmenitiesModal(<?= $prop->id ?>, '<?= esc(addslashes($prop->title)) ?>')">
-                                <i class="fa-solid fa-sparkles mr-2"></i> Amenities
-                            </button>
+                           
                             <a href="<?= $linkUrl ?>" class="nm-btn"><?= $displayPrice ?></a>
                           </div>
                         </div>

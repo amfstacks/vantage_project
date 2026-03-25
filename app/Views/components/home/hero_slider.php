@@ -30,7 +30,7 @@ if (isset($featuredProperties) && !empty($featuredProperties)) {
                 'subtitle' => $marketingContent[$slideCount]['subtitle'],
                 'title'    => $marketingContent[$slideCount]['title'],
                 // Button 1 links to the specific property in the background!
-                'link'     => base_url('property/' . $prop->id) 
+                'link'     => base_url('property/' . $prop->slug) 
             ];
             $slideCount++;
         }

@@ -20,7 +20,7 @@
 
     <aside class="w-64 bg-white border-r border-gray-200 flex-col hidden md:flex z-20">
         <div class="h-16 flex items-center px-6 border-b border-gray-200">
-            <span class="font-extrabold text-xl text-indigo-600 tracking-tight">
+            <span class="font-extrabold text-xl text-yellow-600 tracking-tight">
                 <?= esc(config('Site')->siteName) ?><span class="text-gray-800">.</span>
             </span>
         </div>
@@ -33,7 +33,7 @@
             
             // DRY: Define our active and inactive Tailwind classes once
             $baseClass     = "flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ";
-            $activeClass   = "bg-indigo-50 text-indigo-700 font-semibold";
+            $activeClass   = "bg-yellow-50 text-yellow-700 font-semibold";
             $inactiveClass = "text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium";
             ?>
 
@@ -75,7 +75,7 @@
                     <p class="text-sm font-bold text-gray-900"><?= esc(session()->get('first_name') ?? 'Admin') ?></p>
                     <p class="text-xs text-gray-500 capitalize"><?= esc(session()->get('role') ?? 'Administrator') ?></p>
                 </div>
-                <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-700 font-bold border border-indigo-200 shadow-sm">
+                <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-700 font-bold border border-indigo-200 shadow-sm">
                     <?= strtoupper(substr(session()->get('first_name') ?? 'A', 0, 1)) ?>
                 </div>
             </div>

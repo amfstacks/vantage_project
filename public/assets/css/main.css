@@ -426,8 +426,10 @@ img {
   --ztc-text-text-8: #FF6B00;
   --ztc-bg-bg-1: #fff;
   --ztc-bg-bg-2: #030E0F;
-  --ztc-bg-bg-3: #CFB53B;
-  --ztc-bg-bg-4: #073B3A;
+  --ztc-bg-bg-3: #DBA20F; 
+  /* --ztc-bg-bg-3: #CFB53B; //DBA20F */
+
+  --ztc-bg-bg-4: #DBA20F;
   --ztc-bg-bg-5: #FCC608;
   --ztc-bg-bg-6: #1A47FB;
   --ztc-bg-bg-7: #FF6B00;
@@ -683,7 +685,8 @@ Location:
 .theme-btn1 {
   display: inline-block;
   padding: 14px 16.57px;
-  color: var(--ztc-text-text-2);
+  /* color: var(--ztc-text-text-2); */
+  color: white;
   font-size: var(--ztc-font-size-font-s14);
   font-style: normal;
   font-weight: var(--ztc-weight-medium);
@@ -7272,7 +7275,7 @@ Location:
   display: inline-block;
 }
 .homepage1-body .header-area.homepage1 .header-top-area .header-content li span {
-  color: #224F4E;
+  color: #828b8b;
   display: inline-block;
   margin: 0 8px;
 }

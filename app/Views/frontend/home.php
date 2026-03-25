@@ -71,7 +71,7 @@
 
 
 <!-- //serach form  -->
-  <div class="others-section-area">
+  <!-- <div class="others-section-area">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -442,7 +442,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
 
@@ -627,7 +627,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <div class="col-lg-2"></div>
               <div class="col-lg-5" data-aos="zoom-in" data-aos-duration="1000">
                 <div class="btn-area1 text-center">
-                  <a href="sidebar-grid.html" class="theme-btn1">Find Your Dream Home <span class="arrow1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                  <a href="<?=base_url('properties')?>" class="theme-btn1">Find Your Dream Home <span class="arrow1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
                         <path d="M12 13H4V11H12V4L20 12L12 20V13Z"></path>
                       </svg></span><span class="arrow2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
                         <path d="M12 13H4V11H12V4L20 12L12 20V13Z"></path>

@@ -8,7 +8,7 @@
             <h2 class="text-2xl font-bold text-gray-900 tracking-tight">Property Listings</h2>
             <p class="text-gray-500 mt-1 text-sm">Manage, edit, and monitor all properties on the platform.</p>
         </div>
-        <a href="<?= base_url('admin/properties/create') ?>" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-lg font-bold shadow-sm transition-colors">
+        <a href="<?= base_url('admin/properties/create') ?>" class="inline-flex items-center gap-2 bg-yellow-600 hover:bg-yellow-700 text-white px-5 py-2.5 rounded-lg font-bold shadow-sm transition-colors">
             <i class="fas fa-plus"></i> Add New Property
         </a>
     </div>
@@ -43,7 +43,7 @@
                                 </div>
                                 <h3 class="text-lg font-bold text-gray-900 mb-1">No properties found</h3>
                                 <p class="text-gray-500 text-sm">Get started by creating your first listing.</p>
-                                <a href="<?= base_url('admin/properties/create') ?>" class="mt-4 inline-block text-indigo-600 font-bold hover:text-indigo-800">Add Listing &rarr;</a>
+                                <a href="<?= base_url('admin/properties/create') ?>" class="mt-4 inline-block text-yellow-600 font-bold hover:text-yellow-800">Add Listing &rarr;</a>
                             </td>
                         </tr>
                     <?php else: ?>
@@ -78,7 +78,7 @@
                                         <?php if ($property->purpose === 'sale'): ?>
                                             <span class="text-blue-600 bg-blue-50 px-2 py-0.5 rounded text-xs font-semibold border border-blue-100">For Sale</span>
                                         <?php elseif ($property->purpose === 'shortlet'): ?>
-                                            <span class="text-purple-600 bg-purple-50 px-2 py-0.5 rounded text-xs font-semibold border border-purple-100">Shortlet</span>
+                                            <span class="text-yellow-600 bg-purple-50 px-2 py-0.5 rounded text-xs font-semibold border border-purple-100">Shortlet</span>
                                         <?php else: ?>
                                             <span class="text-teal-600 bg-teal-50 px-2 py-0.5 rounded text-xs font-semibold border border-teal-100">For Rent</span>
                                         <?php endif; ?>
@@ -94,7 +94,7 @@
                                             <?php endforeach; ?>
                                             
                                             <?php if (count($property->prices) > 3): ?>
-                                                <div class="text-[10px] uppercase font-bold text-indigo-500 pt-1">
+                                                <div class="text-[10px] uppercase font-bold text-yellow-500 pt-1">
                                                     + <?= count($property->prices) - 3 ?> more options
                                                 </div>
                                             <?php endif; ?>
@@ -129,7 +129,7 @@
         <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors p-1" title="View Public Listing">
             <i class="fas fa-external-link-alt"></i>
         </a>
-        <a href="<?= base_url('admin/properties/edit/' . $property->id) ?>" class="text-gray-400 hover:text-indigo-600 transition-colors p-1" title="Edit Property">
+        <a href="<?= base_url('admin/properties/edit/' . $property->id) ?>" class="text-gray-400 hover:text-yellow-600 transition-colors p-1" title="Edit Property">
             <i class="fas fa-edit"></i>
         </a>
         <a href="<?= base_url('admin/properties/delete/' . $property->id) ?>" onclick="return confirm('Are you sure you want to permanently delete this property and all its images? This cannot be undone.');" class="text-gray-400 hover:text-red-600 transition-colors p-1" title="Delete Property">

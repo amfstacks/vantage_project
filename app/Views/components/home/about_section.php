@@ -55,7 +55,10 @@ if (isset($properties) && is_array($properties)) {
                     <div class="space20"></div>
                     <h2 class="text-anime-style-3">Embrace the Elegance of Our Exclusive Properties</h2>
                     <div class="space18"></div>
-                    <p data-aos="fade-left" data-aos-duration="900">At <?= esc(config('Site')->siteName) ?>, we’re redefining the way people find, sell, and invest in properties. Our mission is to simplify real estate by providing innovative solutions and expert guidance.</p>
+                    <p data-aos="fade-left" data-aos-duration="900"><?= esc(config('Site')->siteNameLong) ?>is a premier, registered, and licensed real estate and lifestyle
+development company headquartered in Abuja, Nigeria. <br>We specialize in luxury
+residential, commercial, and investment real estate solutions, along with construction,
+interior design, décor, general contracting, and investment consulting ... </p>
                     <div class="space32"></div>
                     
                     <div class="counter-boxes" data-aos="fade-left" data-aos-duration="1000">
@@ -88,8 +91,8 @@ if (isset($properties) && is_array($properties)) {
                     <div class="space32"></div>
                     
                     <div class="btn-area1" data-aos="fade-left" data-aos-duration="1100">
-                        <a href="<?= base_url('properties') ?>" class="theme-btn1">
-                            See All Properties <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        <a href="<?= base_url('about') ?>" class="theme-btn1">
+                            Read more about us <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
                         </a>
                     </div>
                 </div>

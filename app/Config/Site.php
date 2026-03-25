@@ -8,10 +8,11 @@ class Site extends BaseConfig
 {
     // Global Platform Information
     public string $siteName     = 'Vantage Luxe';
+    public string $siteNameLong     = 'Vantage Luxe Realty';
     public string $defaultTitle = 'Premium Real Estate Platform';
     public string $contactEmail = 'support@Vantage.com';
-    public string $contactPhone = '+234 800 000 0000';
-    public string $address      = '123 Real Estate Avenue, Abuja, FCT';
+    public string $contactPhone = ' +234 803 339 0219 | +234 913 543 3368';
+    public string $address      = 'Abuja, Nigeria';
     public string $logoPath     = 'assets/img/logo/logo1.png';
     
     // Social Links
