@@ -16,6 +16,7 @@ $routes->get('ajax/load-featured-tabs', 'Frontend\PropertyAjax::loadAllFeaturedT
 $routes->get('ajax/get-amenities/(:num)', 'Frontend\PropertyAjax::getAmenities/$1');
 $routes->get('ajax/load-recent-properties', 'Frontend\PropertyAjax::loadRecentProperties');
 $routes->get('ajax/load-locations', 'Frontend\PropertyAjax::loadLocations');
+$routes->get('properties', 'Frontend\Properties::index');
 
 
 // Protected Admin Routes (Grouped with the filter)
