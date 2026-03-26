@@ -18,7 +18,8 @@ $routes->get('ajax/load-recent-properties', 'Frontend\PropertyAjax::loadRecentPr
 $routes->get('ajax/load-locations', 'Frontend\PropertyAjax::loadLocations');
 $routes->get('properties', 'Frontend\Properties::index');
 $routes->get('property/(:segment)', 'Frontend\Properties::show/$1');
-
+$routes->get('about', 'Frontend\About::index');
+$routes->get('contact', 'Frontend\Contact::index');
 
 // Protected Admin Routes (Grouped with the filter)
 $routes->group('admin', ['filter' => 'adminAuth', 'namespace' => 'App\Controllers\Admin'], function($routes) {
