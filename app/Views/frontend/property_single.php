@@ -112,8 +112,17 @@ if (!empty($property->prices)) {
                     </ul>
                   </div>
 
-                  <ul class="share">
-                    <li><a href="javascript:void(0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.52853C14.35 2.42 17.98 2.49 20.2426 4.75736C22.5053 7.02472 22.583 10.637 20.4786 12.993L11.9999 21.485L3.52138 12.993C1.41705 10.637 1.49571 7.01901 3.75736 4.75736C6.02157 2.49315 9.64519 2.41687 12.001 4.52853ZM18.827 6.1701C17.3279 4.66794 14.9076 4.60701 13.337 6.01687L12.0019 7.21524L10.6661 6.01781C9.09098 4.60597 6.67506 4.66808 5.17157 6.17157C3.68183 7.66131 3.60704 10.0473 4.97993 11.6232L11.9999 18.6543L19.0201 11.6232C20.3935 10.0467 20.319 7.66525 18.827 6.1701Z"></path></svg></a></li>
+                 <ul class="share" style="display: flex; gap: 15px; list-style: none;">
+                    <li>
+                      <a href="https://wa.me/?text=Check%20out%20this%20property%3A%20<?= urlencode(current_url()) ?>" target="_blank" title="Share on WhatsApp">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 24px; color: #25D366;"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)" onclick="copyPropertyLink()" title="Copy Link">
+                        <i class="fa-solid fa-link" style="font-size: 24px; color: #6b7280;"></i>
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -174,7 +183,7 @@ if (!empty($property->prices)) {
               </div>
               <?php endif; ?>
 
-              <?php if(!empty($property->video_url)): ?>
+              <!-- <?php if(!empty($property->video_url)): ?>
               <div class="space60"></div>
               <div class="bg1">
                 <h3>Play Video</h3>
@@ -185,6 +194,24 @@ if (!empty($property->prices)) {
                   </div>
                   <a href="<?= esc($property->video_url) ?>" class="popup-youtube">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M6 20.1957V3.80421C6 3.01878 6.86395 2.53993 7.53 2.95621L20.6432 11.152C21.2699 11.5436 21.2699 12.4563 20.6432 12.848L7.53 21.0437C6.86395 21.46 6 20.9812 6 20.1957Z"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <?php endif; ?> -->
+
+              <?php if(!empty($property->video_url)): ?>
+              <div class="space60"></div>
+              <div class="bg1">
+                <h3>Play Video</h3>
+                <div class="space32"></div>
+                <div class="vide-images position-relative">
+                  <div class="img1">
+                    <img src="<?= $primaryImage ?>" alt="Video Thumbnail" style="height: 400px; width: 100%; object-fit: cover; filter: brightness(0.6); border-radius: 8px;">
+                  </div>
+                  <a href="<?= esc($property->video_url) ?>" class="popup-youtube" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; display: block;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 80px; height: 80px; color: #fff;">
                       <path d="M6 20.1957V3.80421C6 3.01878 6.86395 2.53993 7.53 2.95621L20.6432 11.152C21.2699 11.5436 21.2699 12.4563 20.6432 12.848L7.53 21.0437C6.86395 21.46 6 20.9812 6 20.1957Z"></path>
                     </svg>
                   </a>
@@ -315,4 +342,27 @@ if (!empty($property->prices)) {
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    if (typeof $.fn.magnificPopup !== 'undefined') {
+        $('.popup-youtube').magnificPopup({
+            disableOn: 320,
+            type: 'iframe',
+            mainClass: 'mfp-fade',
+            removalDelay: 160,
+            preloader: false,
+            fixedContentPos: false
+        });
+    }
+
+    function copyPropertyLink() {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+        alert("Property link copied to clipboard!");
+    }).catch(function(err) {
+        console.error('Could not copy text: ', err);
+    });
+}
+});
+</script>
 <?= $this->endSection() ?>

@@ -258,7 +258,7 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">YouTube Video URL</label>
                         <div class="flex rounded-md shadow-sm">
                             <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50"><i class="fab fa-youtube text-red-500"></i></span>
-                            <input type="url" name="video_url" id="youtube_url" placeholder="https://youtube.com/watch?v=..." value="<?= old('youtube_url', $property->youtube_url ?? '') ?>" class="flex-1 w-full px-4 py-2 rounded-r-md border border-gray-300 focus:ring-indigo-500 text-sm">
+                            <input type="url" name="video_url" id="youtube_url" placeholder="https://youtube.com/watch?v=..." value="<?= old('youtube_url', $property->video_url ?? '') ?>" class="flex-1 w-full px-4 py-2 rounded-r-md border border-gray-300 focus:ring-indigo-500 text-sm">
                         </div>
                     </div>
                     <div>
@@ -269,8 +269,23 @@
                         </div>
                     </div>
                 </div>
+                <?php
+                        // Intelligently parse the existing URL to see if we should show the preview on load
+                        $existingVideoUrl = old('video_url', $property->video_url ?? '');
+                        $youtubeId = '';
+                        $previewHiddenClass = 'hidden';
 
-                <div id="videoPreviewContainer" class="hidden aspect-video w-full md:w-2/3 lg:w-1/2 rounded-xl overflow-hidden border border-gray-200 shadow-sm bg-gray-900 mt-4">
+                        if (!empty($existingVideoUrl)) {
+                            // Match standard, embed, and shortened youtu.be links
+                            preg_match('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/', $existingVideoUrl, $matches);
+                            if (isset($matches[2]) && strlen($matches[2]) === 11) {
+                                $youtubeId = $matches[2];
+                                $previewHiddenClass = ''; // Remove 'hidden' so it shows instantly
+                            }
+                        }
+                    ?>
+
+                <div id="videoPreviewContainer" class="<?= $previewHiddenClass ?> aspect-video w-full md:w-2/3 lg:w-1/2 rounded-xl overflow-hidden border border-gray-200 shadow-sm bg-gray-900 mt-4">
                     <iframe id="youtubeIframe" class="w-full h-full" src="" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
@@ -417,20 +432,41 @@
         const ytInput = document.getElementById('youtube_url');
         const ytContainer = document.getElementById('videoPreviewContainer');
         const ytIframe = document.getElementById('youtubeIframe');
+        function updateVideoPreview() {
 
-        ytInput.addEventListener('input', function() {
-            const url = this.value;
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            const match = url.match(regExp);
+        const url = ytInput.value;
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        const match = url ? url.match(regExp) : null;
 
-            if (match && match[2].length === 11) {
-                ytIframe.src = 'https://www.youtube.com/embed/' + match[2];
-                ytContainer.classList.remove('hidden');
-            } else {
-                ytIframe.src = '';
-                ytContainer.classList.add('hidden');
-            }
-        });
+        if (match && match[2].length === 11) {
+            // Insert the ID into the iframe and show the container
+            ytIframe.src = 'https://www.youtube.com/embed/' + match[2];
+            ytContainer.classList.remove('hidden');
+        } else {
+            // Empty the iframe and hide the container
+            ytIframe.src = '';
+            ytContainer.classList.add('hidden');
+        }
+    }
+
+    // 2. Trigger the function whenever the user types or pastes
+    ytInput.addEventListener('input', updateVideoPreview);
+    updateVideoPreview();
+
+
+        // ytInput.addEventListener('input', function() {
+        //     const url = this.value;
+        //     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        //     const match = url.match(regExp);
+
+        //     if (match && match[2].length === 11) {
+        //         ytIframe.src = 'https://www.youtube.com/embed/' + match[2];
+        //         ytContainer.classList.remove('hidden');
+        //     } else {
+        //         ytIframe.src = '';
+        //         ytContainer.classList.add('hidden');
+        //     }
+        // });
 
         // --- 5. MULTIPLE IMAGE PREVIEW & DELETE ---
         const imageInput = document.getElementById('images');

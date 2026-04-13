@@ -8,6 +8,11 @@ use App\Models\PropertyPriceModel;
 
 class Home extends BaseController
 {
+
+ public function test()
+    {
+  return view('frontend/loading');
+    }
     public function index()
     {
         $propertyModel = new PropertyModel();
