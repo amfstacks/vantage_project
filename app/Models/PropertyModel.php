@@ -25,8 +25,10 @@ class PropertyModel extends Model
         'price', 
         'price_unit',        // Added
         'discount_price',    // Added
-        'purpose', 
-        'property_type', 
+        'purpose',
+        'purpose_id',
+        'property_type',
+        'property_type_id', 
         'address',           // Added
         'location', 
         'city',              // Added

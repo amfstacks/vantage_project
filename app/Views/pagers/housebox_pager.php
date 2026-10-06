@@ -1,29 +1,18 @@
 <?php $pager->setSurroundCount(2) ?>
+<nav class="vl-pagination" aria-label="Property pagination">
+    <?php if ($pager->hasPrevious()): ?>
+        <a href="<?= esc($pager->getPrevious()) ?>" aria-label="Previous page"><i class="fa-solid fa-arrow-left"></i></a>
+    <?php endif; ?>
 
-<div class="pagination-area">
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            <?php if ($pager->hasPrevious()) : ?>
-                <li class="page-item">
-                    <a class="page-link" href="<?= $pager->getPrevious() ?>" aria-label="Previous">
-                        <i class="fa-solid fa-angle-left"></i>
-                    </a>
-                </li>
-            <?php endif ?>
+    <?php foreach ($pager->links() as $link): ?>
+        <?php if ($link['active']): ?>
+            <span class="active" aria-current="page"><?= esc($link['title']) ?></span>
+        <?php else: ?>
+            <a href="<?= esc($link['uri']) ?>"><?= esc($link['title']) ?></a>
+        <?php endif; ?>
+    <?php endforeach; ?>
 
-            <?php foreach ($pager->links() as $link) : ?>
-                <li class="page-item <?= $link['active'] ? 'active' : '' ?>">
-                    <a class="page-link" href="<?= $link['uri'] ?>"><?= $link['title'] ?></a>
-                </li>
-            <?php endforeach ?>
-
-            <?php if ($pager->hasNext()) : ?>
-                <li class="page-item">
-                    <a class="page-link" href="<?= $pager->getNext() ?>" aria-label="Next">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </a>
-                </li>
-            <?php endif ?>
-        </ul>
-    </nav>
-</div>
+    <?php if ($pager->hasNext()): ?>
+        <a href="<?= esc($pager->getNext()) ?>" aria-label="Next page"><i class="fa-solid fa-arrow-right"></i></a>
+    <?php endif; ?>
+</nav>

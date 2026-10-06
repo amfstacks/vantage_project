@@ -1,523 +1,264 @@
+<?php helper('form'); ?>
 <?= $this->extend('layouts/admin') ?>
 
-<?= $this->section('content') ?>
-
+<?= $this->section('head') ?>
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<style>
+.ql-toolbar.ql-snow{border:1px solid #dededb;border-radius:11px 11px 0 0;background:#fafafa}.ql-container.ql-snow{border:1px solid #dededb;border-top:0;border-radius:0 0 11px 11px;background:#fff;min-height:220px}.ql-editor{min-height:220px;font-size:15px;line-height:1.7}
+@media(max-width:640px){.ql-toolbar.ql-snow{overflow-x:auto;white-space:nowrap}.ql-editor{min-height:180px;font-size:16px}}
+</style>
+<?= $this->endSection() ?>
 
-<div class="max-w-6xl mx-auto pb-12">
+<?= $this->section('content') ?>
+<?php
+$isEdit = isset($property) && is_object($property);
+$formAction = $isEdit ? base_url('admin/properties/update/' . $property->id) : base_url('admin/properties/store');
+$value = static function (string $name, $fallback = '') {
+    $oldValue = old($name);
+    return $oldValue !== null ? $oldValue : $fallback;
+};
+$currentDescription = (string) $value('description', $isEdit ? $property->description : '');
 
-    <div class="flex items-center justify-between mb-8">
-        <div>
-            <h2 class="text-2xl font-bold text-gray-900 tracking-tight">Add New Property</h2>
-            <p class="text-gray-500 mt-1">Fill in the details, set pricing, upload media, and optimize for search.</p>
-        </div>
-        <a href="<?= base_url('admin/properties') ?>" class="text-sm font-semibold text-gray-500 hover:text-gray-900 transition-colors">
-            &larr; Back to Properties
-        </a>
-    </div>
-
-    <?php if (session()->getFlashdata('error')) : ?>
-        <div class="mb-8 bg-red-50 border-l-4 border-red-500 p-5 rounded-r-lg shadow-sm flex items-start gap-3">
-            <i class="fas fa-exclamation-circle text-red-500 text-lg mt-0.5"></i>
-            <div class="text-sm text-red-800 font-medium">
-                <?= session()->getFlashdata('error') ?>
-            </div>
-        </div>
-    <?php endif; ?>
-
-    <?php if (session()->getFlashdata('success')) : ?>
-        <div class="mb-8 bg-green-50 border-l-4 border-green-500 p-5 rounded-r-lg shadow-sm flex items-center gap-3">
-            <i class="fas fa-check-circle text-green-500 text-lg"></i>
-            <p class="text-sm text-green-800 font-bold"><?= esc(session()->getFlashdata('success')) ?></p>
-        </div>
-    <?php endif; ?>
-
-
-<?php $actionUrl = isset($property) ? base_url('admin/properties/update/' . $property->id) : base_url('admin/properties/store'); ?>
-    
-    <form action="<?= $actionUrl ?>" method="POST" enctype="multipart/form-data" class="space-y-8" id="propertyForm">
-
-        <?= csrf_field() ?>
-
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-            <h3 class="text-lg font-bold text-gray-900 mb-6 border-b border-gray-50 pb-4">1. Basic Information</h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Property Title <span class="text-red-500">*</span></label>
-                    <input type="text" name="title" required value="<?= old('title', $property->title ?? '') ?>" placeholder="e.g., Exquisite 5 Bedroom Mansion with Pool" 
-                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
-                </div>
-
-               
-
-                <div>
-    <label class="block text-sm font-medium text-gray-700 mb-1">Purpose <span class="text-red-500">*</span></label>
-    
-    <?php $currentPurpose = old('purpose', $property->purpose ?? ''); ?>
-    
-    <select name="purpose" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-white">
-        <option value="">Select Purpose...</option>
-        
-        <option value="sale" <?= $currentPurpose === 'sale' ? 'selected' : '' ?>>For Sale</option>
-        <option value="rent" <?= $currentPurpose === 'rent' ? 'selected' : '' ?>>For Rent (Yearly)</option>
-        <option value="shortlet" <?= $currentPurpose === 'shortlet' ? 'selected' : '' ?>>Shortlet (Daily)</option>
-    </select>
-</div>
-               <div>
-    <label class="block text-sm font-medium text-gray-700 mb-1">Property Type <span class="text-red-500">*</span></label>
-    
-    <?php $currentType = old('property_type', $property->property_type ?? ''); ?>
-    
-    <select name="property_type" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-white">
-        <option value="Apartment" <?= $currentType === 'Apartment' ? 'selected' : '' ?>>Apartment</option>
-        <option value="Detached Duplex" <?= $currentType === 'Detached Duplex' ? 'selected' : '' ?>>Detached Duplex</option>
-        <option value="Semi-Detached Duplex" <?= $currentType === 'Semi-Detached Duplex' ? 'selected' : '' ?>>Semi-Detached Duplex</option>
-        <option value="Terrace" <?= $currentType === 'Terrace' ? 'selected' : '' ?>>Terrace</option>
-        <option value="Land" <?= $currentType === 'Land' ? 'selected' : '' ?>>Land</option>
-    </select>
-</div>
-
-                <div class="md:col-span-2 grid grid-cols-2 md:grid-cols-4 gap-4 bg-gray-50 p-4 rounded-xl border border-gray-100">
-                    <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Bedrooms</label>
-                        <input type="number" name="bedrooms" min="0"  value="<?= old('bedrooms', $property->bedrooms ?? 0) ?>" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 text-center font-bold">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Bathrooms</label>
-                        <input type="number" name="bathrooms" min="0" value="<?= old('bathrooms', $property->bathrooms ?? 0) ?>" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 text-center font-bold">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Toilets</label>
-                        <input type="number" name="toilets" min="0" value="<?= old('toilets', $property->toilets ?? 0) ?>" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 text-center font-bold">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Area (sqm)</label>
-                        <input type="number" name="area_sqm" step="0.01" value="<?= old('area_sqm', $property->area_sqm ?? 0) ?>" placeholder="e.g. 450.5" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 text-center font-bold">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-       
-
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-            <div class="flex items-center justify-between mb-6 border-b border-gray-50 pb-4">
-                <h3 class="text-lg font-bold text-gray-900">2. Pricing Strategy</h3>
-                <button type="button" id="addPriceBtn" class="text-sm font-bold text-yellow-600 hover:text-yellow-800 bg-yellow-50 px-3 py-1.5 rounded-md transition-colors">
-                    <i class="fas fa-plus mr-1"></i> Add Pricing Option
-                </button>
-            </div>
-            
-            <div id="pricingContainer" class="space-y-4">
-                <?php 
-                // Handle both pre-filling on Edit, and default 1 row on Create
-                $existingPrices = isset($propertyPrices) && !empty($propertyPrices) ? $propertyPrices : [ (object)['price'=>'', 'price_unit'=>'One Time', 'discount_price'=>''] ];
-                foreach ($existingPrices as $index => $p): 
-                ?>
-                <div class="pricing-row relative grid grid-cols-1 md:grid-cols-4 gap-4 items-end bg-gray-50 p-4 rounded-xl border border-gray-100">
-                    
-                    <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Base Price (<?= esc(config('Site')->currency) ?>) *</label>
-                        <input type="number" name="prices[<?= $index ?>][price]" required value="<?= esc($p->price) ?>" class="base-price w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 font-bold text-gray-900">
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Pricing Unit *</label>
-                        <select name="prices[<?= $index ?>][price_unit]" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 bg-white font-medium">
-                            <option value="One Time" <?= $p->price_unit === 'One Time' ? 'selected' : '' ?>>One Time</option>
-                            <option value="Yearly" <?= $p->price_unit === 'Yearly' ? 'selected' : '' ?>>Yearly</option>
-                            <option value="Monthly" <?= $p->price_unit === 'Monthly' ? 'selected' : '' ?>>Monthly</option>
-                            <option value="Daily" <?= $p->price_unit === 'Daily' ? 'selected' : '' ?>>Daily</option>
-                            <option value="Per Night" <?= $p->price_unit === 'Per Night' ? 'selected' : '' ?>>Per Night</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Discounted Price</label>
-                        <input type="number" name="prices[<?= $index ?>][discount_price]" value="<?= esc($p->discount_price) ?>" class="discount-price w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 font-bold text-green-700 bg-green-50">
-                    </div>
-
-                    <div class="flex items-center gap-2 pb-1">
-                        <div class="discount-badge hidden items-center gap-1 px-3 py-1.5 rounded bg-red-100 border border-red-200">
-                            <i class="fas fa-tags text-red-500 text-xs"></i>
-                            <span class="text-xs font-bold text-red-700">-<span class="discount-percent">0</span>%</span>
-                        </div>
-                        <button type="button" class="remove-price-btn <?= $index === 0 ? 'hidden' : '' ?> ml-auto text-red-400 hover:text-red-600 p-2">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-            <h3 class="text-lg font-bold text-gray-900 mb-6 border-b border-gray-50 pb-4">3. Location Details</h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="md:col-span-2">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Full Property Address</label>
-                    <input type="text" name="address" placeholder="e.g., Plot 123, Diplomatic Drive"  value="<?= old('address', $property->address ?? '') ?>"
-                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">District / Neighborhood <span class="text-red-500">*</span></label>
-                    <input type="text" name="location" required placeholder="e.g., Asokoro, Guzape"  value="<?= old('location', $property->location ?? '') ?>"
-                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">City <span class="text-red-500">*</span></label>
-                    <input type="text" name="city" required value="<?= old('city', $property->city ?? 'Abuja') ?>" 
-                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 bg-gray-50 text-gray-600">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-500 mb-1">Latitude (For Maps)</label>
-                    <input type="text" name="latitude" placeholder="e.g., 9.0765" class="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm bg-gray-50" value="<?= old('latitude', $property->latitude ?? '') ?>">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-500 mb-1">Longitude (For Maps)</label>
-                    <input type="text" name="longitude" placeholder="e.g., 7.3986" class="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm bg-gray-50" value="<?= old('longitude', $property->longitude ?? '') ?>">
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-            <h3 class="text-lg font-bold text-gray-900 mb-6 border-b border-gray-50 pb-4">4. Description & SEO</h3>
-            
-           <div class="mb-8">
-    <label class="block text-sm font-medium text-gray-700 mb-2">Detailed Description <span class="text-red-500">*</span></label>
-    
-    <?php $currentDescription = old('description', $property->description ?? ''); ?>
-    
-    <div id="quillEditor" class="h-64 bg-white rounded-b-lg"><?= $currentDescription ?></div>
-    
-    <input type="hidden" name="description" id="hiddenDescription" value="<?= esc($currentDescription) ?>" required>
-</div>
-
-            <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                <h4 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fab fa-google text-blue-500"></i> Search Engine Optimization</h4>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-medium text-gray-700 mb-1">Meta Title (Max 60 chars)</label>
-                        <input type="text" name="meta_title" value="<?= old('meta_title', $property->meta_title ?? '') ?>" placeholder="Buy 5 Bedroom Duplex in Guzape | Housebox" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm">
-                    </div>
-                  <div>
-    <label class="block text-xs font-medium text-gray-700 mb-1">Meta Description (Max 160 chars)</label>
-    <textarea name="meta_description" rows="2" placeholder="Brief, compelling summary for Google search results..." class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"><?= esc(old('meta_description', $property->meta_description ?? '')) ?></textarea>
-</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-            <h3 class="text-lg font-bold text-gray-900 mb-6 border-b border-gray-50 pb-4">5. Media & Tours</h3>
-            
-
-<?php if(isset($existingImages) && !empty($existingImages)): ?>
-        <div class="mb-6">
-            <label class="block text-sm font-medium text-gray-700 mb-2">Current Images</label>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                <?php foreach($existingImages as $img): ?>
-                    <div class="relative group aspect-square rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-                        <img src="<?= base_url($img->image_path) ?>" class="w-full h-full object-cover">
-                        <?php if($img->is_primary): ?>
-                            <span class="absolute top-2 left-2 bg-yellow-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow">COVER</span>
-                        <?php endif; ?>
-                        <a href="<?= base_url('admin/properties/delete-image/' . $img->id) ?>" onclick="return confirm('Delete this image?');" class="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-7 h-7 flex items-center justify-center shadow opacity-0 group-hover:opacity-100 transition-opacity">
-                            <i class="fas fa-trash text-xs"></i>
-                        </a>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-            <p class="text-xs text-gray-500 mt-2">Uploading new images below will add them to this gallery.</p>
-        </div>
-    <?php endif; ?>
-
-            <div class="space-y-6">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Property Images (Select Multiple) <span class="text-red-500">*</span></label>
-                    <div class="relative flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl hover:border-indigo-500 hover:bg-yellow-50 transition-colors bg-gray-50">
-                        <div class="space-y-1 text-center">
-                            <i class="fas fa-images text-3xl text-gray-400 mb-2"></i>
-                            <div class="flex text-sm text-gray-600 justify-center">
-                                <label for="images" class="relative cursor-pointer bg-white rounded-md font-medium text-yellow-600 hover:text-yellow-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 px-2 py-1 shadow-sm border border-gray-200">
-                                    <span>Upload files</span>
-                                    <input id="images" name="images[]" type="file" multiple accept="image/jpeg, image/png, image/webp" class="sr-only">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="imagePreviewContainer" class="mt-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 hidden"></div>
-                </div>
-
-                <hr class="border-gray-100">
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">YouTube Video URL</label>
-                        <div class="flex rounded-md shadow-sm">
-                            <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50"><i class="fab fa-youtube text-red-500"></i></span>
-                            <input type="url" name="video_url" id="youtube_url" placeholder="https://youtube.com/watch?v=..." value="<?= old('youtube_url', $property->video_url ?? '') ?>" class="flex-1 w-full px-4 py-2 rounded-r-md border border-gray-300 focus:ring-indigo-500 text-sm">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Matterport / 3D Tour URL</label>
-                        <div class="flex rounded-md shadow-sm">
-                            <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50"><i class="fas fa-vr-cardboard text-yellow-500"></i></span>
-                            <input type="url" name="virtual_tour_url" value="<?= old('virtual_tour_url', $property->virtual_tour_url ?? '') ?>" placeholder="https://my.matterport.com/show/?m=..." class="flex-1 w-full px-4 py-2 rounded-r-md border border-gray-300 focus:ring-indigo-500 text-sm">
-                        </div>
-                    </div>
-                </div>
-                <?php
-                        // Intelligently parse the existing URL to see if we should show the preview on load
-                        $existingVideoUrl = old('video_url', $property->video_url ?? '');
-                        $youtubeId = '';
-                        $previewHiddenClass = 'hidden';
-
-                        if (!empty($existingVideoUrl)) {
-                            // Match standard, embed, and shortened youtu.be links
-                            preg_match('/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/', $existingVideoUrl, $matches);
-                            if (isset($matches[2]) && strlen($matches[2]) === 11) {
-                                $youtubeId = $matches[2];
-                                $previewHiddenClass = ''; // Remove 'hidden' so it shows instantly
-                            }
-                        }
-                    ?>
-
-                <div id="videoPreviewContainer" class="<?= $previewHiddenClass ?> aspect-video w-full md:w-2/3 lg:w-1/2 rounded-xl overflow-hidden border border-gray-200 shadow-sm bg-gray-900 mt-4">
-                    <iframe id="youtubeIframe" class="w-full h-full" src="" frameborder="0" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-            <div class="flex items-center justify-between mb-6 border-b border-gray-50 pb-4">
-                <h3 class="text-lg font-bold text-gray-900">6. Amenities</h3>
-                <label class="flex items-center cursor-pointer text-sm font-bold text-yellow-600 hover:text-yellow-800 transition-colors bg-yellow-50 px-3 py-1.5 rounded-md">
-                    <input type="checkbox" id="selectAllAmenities" class="rounded border-gray-300 text-yellow-600 focus:ring-indigo-500 mr-2"> Select All
-                </label>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <?php if(!empty($amenities)): ?>
-                    <?php foreach($amenities as $amenity): ?>
-                        <label class="relative flex items-start p-3 border border-gray-200 rounded-xl cursor-pointer hover:bg-yellow-50 transition-all group has-[:checked]:bg-yellow-50 has-[:checked]:border-indigo-500">
-                            <div class="flex items-center h-5">
-<input type="checkbox" name="amenities[]" value="<?= $amenity->id ?>" 
-    <?= (isset($selectedAmenities) && in_array($amenity->id, $selectedAmenities)) ? 'checked' : '' ?> 
-    class="amenity-checkbox rounded border-gray-300 text-yellow-600 focus:ring-indigo-500">
-                            </div>
-                            <div class="ml-3 text-sm flex items-center gap-2">
-                                <?php if($amenity->icon): ?>
-                                    <i class="<?= esc($amenity->icon) ?> text-gray-400 group-has-[:checked]:text-yellow-600"></i>
-                                <?php endif; ?>
-                                <span class="font-medium text-gray-700 group-has-[:checked]:text-yellow-900"><?= esc($amenity->name) ?></span>
-                            </div>
-                        </label>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
-        </div>
-
-        <div class="sticky bottom-4 z-50 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] border border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p class="text-sm text-gray-500 hidden md:block"><i class="fas fa-info-circle"></i> Check all fields before publishing.</p>
-            <div class="flex items-center gap-3 w-full sm:w-auto">
-                <button type="submit" name="action" value="draft" class="flex-1 sm:flex-none px-6 py-3 bg-white border border-gray-300 text-gray-700 font-bold rounded-xl hover:bg-gray-50 focus:ring-4 focus:ring-gray-100 transition-all shadow-sm">
-                    <i class="fas fa-save mr-2"></i> Save as Draft
-                </button>
-                <button type="submit" name="action" value="publish" class="flex-1 sm:flex-none px-8 py-3 bg-yellow-600 text-white font-bold rounded-xl hover:bg-yellow-700 focus:ring-4 focus:ring-indigo-200 transition-all shadow-md transform hover:-translate-y-0.5">
-                    <i class="fas fa-paper-plane mr-2"></i> Publish Listing
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
-
-<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        
-        // --- 1. INITIALIZE WYSIWYG EDITOR ---
-        var quill = new Quill('#quillEditor', {
-            theme: 'snow',
-            placeholder: 'Highlight the key features and selling points...',
-            modules: {
-                toolbar: [
-                    ['bold', 'italic', 'underline'],
-                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                    [{ 'header': [2, 3, false] }],
-                    ['clean']
-                ]
-            }
-        });
-
-        // Sync Quill HTML to hidden input before form submission
-        document.getElementById('propertyForm').addEventListener('submit', function(e) {
-            // Get the HTML content from Quill
-            var htmlData = document.querySelector('.ql-editor').innerHTML;
-            // Prevent submission if it's completely empty
-            if (htmlData === '<p><br></p>') {
-                alert('Please enter a description.');
-                e.preventDefault();
-                return false;
-            }
-            document.getElementById('hiddenDescription').value = htmlData;
-        });
-
-      // --- 2. LIVE PRICING AUTO-CALCULATOR (BUG FIXED) ---
-// --- 2. DYNAMIC PRICING MATRIX LOGIC ---
-        const pricingContainer = document.getElementById('pricingContainer');
-        const addPriceBtn = document.getElementById('addPriceBtn');
-        let priceIndex = document.querySelectorAll('.pricing-row').length;
-
-        // Add new row
-        addPriceBtn.addEventListener('click', function() {
-            // Clone the first row
-            const firstRow = pricingContainer.querySelector('.pricing-row');
-            const newRow = firstRow.cloneNode(true);
-            
-            // Update the name attributes with the new index (prices[1][price], etc.)
-            newRow.querySelectorAll('input, select').forEach(input => {
-                input.name = input.name.replace(/\[\d+\]/, `[${priceIndex}]`);
-                if(input.tagName === 'INPUT') input.value = ''; // Clear cloned values
-            });
-            
-            // Hide the badge, show the delete button
-            newRow.querySelector('.discount-badge').style.display = 'none';
-            newRow.querySelector('.remove-price-btn').classList.remove('hidden');
-            
-            pricingContainer.appendChild(newRow);
-            priceIndex++;
-        });
-
-        // Event Delegation for Remove Buttons and Live Calculations
-        pricingContainer.addEventListener('input', calculateRowDiscount);
-        pricingContainer.addEventListener('click', function(e) {
-            if (e.target.closest('.remove-price-btn')) {
-                e.target.closest('.pricing-row').remove();
-            }
-        });
-
-        function calculateRowDiscount(e) {
-            if (e.target.classList.contains('base-price') || e.target.classList.contains('discount-price')) {
-                const row = e.target.closest('.pricing-row');
-                const base = parseFloat(row.querySelector('.base-price').value) || 0;
-                const discount = parseFloat(row.querySelector('.discount-price').value) || 0;
-                const badge = row.querySelector('.discount-badge');
-                
-                if (base > 0 && discount > 0 && discount < base) {
-                    const percentage = Math.round(((base - discount) / base) * 100);
-                    row.querySelector('.discount-percent').innerText = percentage;
-                    badge.style.display = 'inline-flex'; 
-                } else {
-                    badge.style.display = 'none';
-                }
-            }
-        }
-        
-        // Trigger calc on load for pre-filled edit data
-        document.querySelectorAll('.pricing-row').forEach(row => {
-            row.querySelector('.base-price').dispatchEvent(new Event('input', { bubbles: true }));
-        });
-
-        // --- 3. AMENITIES SELECT ALL ---
-        const selectAllBtn = document.getElementById('selectAllAmenities');
-        const checkboxes = document.querySelectorAll('.amenity-checkbox');
-        selectAllBtn.addEventListener('change', function() {
-            checkboxes.forEach(cb => cb.checked = selectAllBtn.checked);
-        });
-
-        // --- 4. YOUTUBE LIVE PREVIEW ---
-        const ytInput = document.getElementById('youtube_url');
-        const ytContainer = document.getElementById('videoPreviewContainer');
-        const ytIframe = document.getElementById('youtubeIframe');
-        function updateVideoPreview() {
-
-        const url = ytInput.value;
-        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-        const match = url ? url.match(regExp) : null;
-
-        if (match && match[2].length === 11) {
-            // Insert the ID into the iframe and show the container
-            ytIframe.src = 'https://www.youtube.com/embed/' + match[2];
-            ytContainer.classList.remove('hidden');
-        } else {
-            // Empty the iframe and hide the container
-            ytIframe.src = '';
-            ytContainer.classList.add('hidden');
+$currentPurposeId = (int) $value('purpose_id', $isEdit ? ($property->purpose_id ?? 0) : 0);
+if ($currentPurposeId === 0 && $isEdit) {
+    foreach ($purposes as $purposeOption) {
+        if ((string) $purposeOption->slug === (string) ($property->purpose ?? '')) {
+            $currentPurposeId = (int) $purposeOption->id;
+            break;
         }
     }
-
-    // 2. Trigger the function whenever the user types or pastes
-    ytInput.addEventListener('input', updateVideoPreview);
-    updateVideoPreview();
-
-
-        // ytInput.addEventListener('input', function() {
-        //     const url = this.value;
-        //     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-        //     const match = url.match(regExp);
-
-        //     if (match && match[2].length === 11) {
-        //         ytIframe.src = 'https://www.youtube.com/embed/' + match[2];
-        //         ytContainer.classList.remove('hidden');
-        //     } else {
-        //         ytIframe.src = '';
-        //         ytContainer.classList.add('hidden');
-        //     }
-        // });
-
-        // --- 5. MULTIPLE IMAGE PREVIEW & DELETE ---
-        const imageInput = document.getElementById('images');
-        const previewContainer = document.getElementById('imagePreviewContainer');
-        let dt = new DataTransfer();
-
-        imageInput.addEventListener('change', function(e) {
-            for (let i = 0; i < this.files.length; i++) {
-                dt.items.add(this.files[i]);
-            }
-            renderImagePreviews();
-        });
-
-        function renderImagePreviews() {
-            previewContainer.innerHTML = '';
-            const files = dt.files;
-            if(files.length > 0) {
-                previewContainer.classList.remove('hidden');
-            } else {
-                previewContainer.classList.add('hidden');
-            }
-
-            Array.from(files).forEach((file, index) => {
-                if (!file.type.startsWith('image/')) return;
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const div = document.createElement('div');
-                    div.className = 'relative group aspect-square rounded-xl overflow-hidden border border-gray-200 shadow-sm';
-                    
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.className = 'w-full h-full object-cover';
-                    
-                    const btn = document.createElement('button');
-                    btn.type = 'button';
-                    btn.className = 'absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-7 h-7 flex items-center justify-center shadow focus:outline-none opacity-0 group-hover:opacity-100 transition-opacity';
-                    btn.innerHTML = '<i class="fas fa-times text-xs"></i>';
-                    
-                    btn.onclick = function() {
-                        dt.items.remove(index);
-                        renderImagePreviews();
-                    };
-
-                    div.appendChild(img);
-                    div.appendChild(btn);
-                    previewContainer.appendChild(div);
-                }
-                reader.readAsDataURL(file);
-            });
-            imageInput.files = dt.files; // Sync back to input
+}
+$currentPropertyTypeId = (int) $value('property_type_id', $isEdit ? ($property->property_type_id ?? 0) : 0);
+if ($currentPropertyTypeId === 0 && $isEdit) {
+    foreach ($propertyTypes as $typeOption) {
+        if (strcasecmp((string) $typeOption->name, (string) ($property->property_type ?? '')) === 0) {
+            $currentPropertyTypeId = (int) $typeOption->id;
+            break;
         }
+    }
+}
+
+$prices = old('prices');
+if (! is_array($prices) || $prices === []) {
+    if (! empty($propertyPrices)) {
+        $prices = array_map(static fn ($price) => [
+            'price' => $price->price,
+            'price_unit' => $price->price_unit,
+            'purpose_id' => $price->purpose_id ?? '',
+            'discount_price' => $price->discount_price,
+            'discount_percentage' => $price->discount_percentage ?? null,
+        ], $propertyPrices);
+    } elseif ($isEdit && isset($property->price) && (float) $property->price > 0) {
+        $prices = [[
+            'price' => $property->price,
+            'price_unit' => $property->price_unit ?: 'One Time',
+            'purpose_id' => '',
+            'discount_price' => $property->discount_price,
+            'discount_percentage' => null,
+        ]];
+    } else {
+        $prices = [['price' => '', 'price_unit' => 'One Time', 'purpose_id' => '', 'discount_price' => '', 'discount_percentage' => null]];
+    }
+}
+
+$discountPercent = static function (array $price): float {
+    $base = (float) ($price['price'] ?? 0);
+    $discount = (float) ($price['discount_price'] ?? 0);
+    if ($base <= 0 || $discount <= 0 || $discount >= $base) {
+        return 0;
+    }
+    return round((($base - $discount) / $base) * 100, 2);
+};
+?>
+
+<div class="va-page-intro">
+    <div><h2><?= $isEdit ? 'Edit listing' : 'Create a new listing' ?></h2><p>Build a complete, media-rich property page with database-driven categories, flexible pricing and search metadata.</p></div>
+    <div class="va-inline-actions">
+        <?php if ($isEdit && $property->status === 'active'): ?><a class="va-btn va-btn--light" href="<?= base_url('property/' . $property->slug) ?>" target="_blank"><i class="fa-solid fa-eye"></i> Preview live page</a><?php endif; ?>
+    </div>
+</div>
+
+<form action="<?= esc($formAction) ?>" method="post" enctype="multipart/form-data" id="propertyForm" class="va-form-stack">
+    <?= csrf_field() ?>
+
+    <section class="va-card">
+        <div class="va-card-head"><div><strong>Property identity</strong><div class="va-help">Property purpose and type are centrally managed, so your listings stay consistent.</div></div></div>
+        <div class="va-card-body va-form-grid">
+            <div class="va-field va-span-2"><label for="title">Property title</label><input id="title" type="text" name="title" required maxlength="255" value="<?= esc((string) $value('title', $isEdit ? $property->title : '')) ?>" placeholder="e.g. Contemporary 4-bedroom detached duplex in Asokoro"></div>
+
+            <div class="va-field">
+                <div class="va-field-label-row"><label for="purpose_id">Purpose</label><a href="<?= base_url('admin/purposes') ?>" target="_blank">Manage</a></div>
+                <select id="purpose_id" name="purpose_id" required>
+                    <option value="">Select purpose</option>
+                    <?php foreach ($purposes as $purposeOption): ?>
+                        <?php $isSelected = $currentPurposeId === (int) $purposeOption->id; ?>
+                        <option value="<?= (int) $purposeOption->id ?>" <?= $isSelected ? 'selected' : '' ?> <?= (int) $purposeOption->is_active !== 1 && ! $isSelected ? 'disabled' : '' ?>><?= esc($purposeOption->name) ?><?= (int) $purposeOption->is_active !== 1 ? ' — inactive' : '' ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <?php if (empty($purposes)): ?><div class="va-field-warning">No purposes exist yet. <a href="<?= base_url('admin/purposes') ?>">Create one first.</a></div><?php endif; ?>
+            </div>
+
+            <div class="va-field">
+                <div class="va-field-label-row"><label for="property_type_id">Property type</label><a href="<?= base_url('admin/property-types') ?>" target="_blank">Manage</a></div>
+                <select id="property_type_id" name="property_type_id" required>
+                    <option value="">Select property type</option>
+                    <?php foreach ($propertyTypes as $typeOption): ?>
+                        <?php $isSelected = $currentPropertyTypeId === (int) $typeOption->id; ?>
+                        <option value="<?= (int) $typeOption->id ?>" <?= $isSelected ? 'selected' : '' ?> <?= (int) $typeOption->is_active !== 1 && ! $isSelected ? 'disabled' : '' ?>><?= esc($typeOption->name) ?><?= (int) $typeOption->is_active !== 1 ? ' — inactive' : '' ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <?php if (empty($propertyTypes)): ?><div class="va-field-warning">No property types exist yet. <a href="<?= base_url('admin/property-types') ?>">Create one first.</a></div><?php endif; ?>
+            </div>
+
+            <div class="va-field"><label for="location">Location / district</label><input id="location" type="text" name="location" required value="<?= esc((string) $value('location', $isEdit ? $property->location : '')) ?>" placeholder="Asokoro"></div>
+            <div class="va-field"><label for="city">City</label><input id="city" type="text" name="city" required value="<?= esc((string) $value('city', $isEdit ? $property->city : config('Site')->defaultCity)) ?>" placeholder="Abuja"></div>
+            <div class="va-field va-span-2"><label for="address">Full address</label><input id="address" type="text" name="address" value="<?= esc((string) $value('address', $isEdit ? $property->address : '')) ?>" placeholder="Street, estate or landmark details"></div>
+        </div>
+    </section>
+
+    <section class="va-card">
+        <div class="va-card-head">
+            <div><strong>Pricing</strong><div class="va-help">Create multiple pricing options. A purpose can be attached to an individual price when required.</div></div>
+            <button class="va-btn va-btn--light va-btn--sm" type="button" data-add-price><i class="fa-solid fa-plus"></i> Add price option</button>
+        </div>
+        <div class="va-card-body va-price-list" data-price-list data-next-index="<?= count($prices) ?>">
+            <?php foreach ($prices as $index => $price): ?>
+                <?php $percent = $discountPercent($price); ?>
+                <div class="va-price-row" data-price-row>
+                    <div class="va-price-row__head">
+                        <div class="va-price-row__title"><span class="va-price-number">#<?= (int) $index + 1 ?></span><div><strong>Price option</strong><small>Configure amount, billing unit and optional purpose.</small></div></div>
+                        <div class="va-price-row__tools">
+                            <span class="va-discount-badge <?= $percent > 0 ? 'has-discount' : '' ?>" data-discount-badge><?= $percent > 0 ? esc(rtrim(rtrim(number_format($percent, 2), '0'), '.')) . '% OFF' : 'No discount' ?></span>
+                            <button class="va-btn va-btn--danger va-btn--sm va-price-remove" type="button" data-remove-price title="Remove price"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="va-price-row__grid">
+                        <div class="va-field"><label>Price (₦)</label><input data-price-input type="number" min="1" step="0.01" name="prices[<?= $index ?>][price]" required value="<?= esc((string) ($price['price'] ?? '')) ?>" placeholder="25000000"></div>
+                        <div class="va-field"><label>Price unit</label><select name="prices[<?= $index ?>][price_unit]" required><?php foreach (['One Time','Year','Month','Week','Night','Day'] as $unit): ?><option value="<?= esc($unit) ?>" <?= ($price['price_unit'] ?? 'One Time') === $unit ? 'selected' : '' ?>><?= esc($unit) ?></option><?php endforeach; ?></select></div>
+                        <div class="va-field"><label>Purpose <span class="va-optional">Optional</span></label><select name="prices[<?= $index ?>][purpose_id]"><option value="">General / any purpose</option><?php foreach ($purposes as $purposeOption): ?><option value="<?= (int) $purposeOption->id ?>" <?= (int) ($price['purpose_id'] ?? 0) === (int) $purposeOption->id ? 'selected' : '' ?> <?= (int) $purposeOption->is_active !== 1 && (int) ($price['purpose_id'] ?? 0) !== (int) $purposeOption->id ? 'disabled' : '' ?>><?= esc($purposeOption->name) ?><?= (int) $purposeOption->is_active !== 1 ? ' — inactive' : '' ?></option><?php endforeach; ?></select></div>
+                        <div class="va-field"><label>Discount price (₦) <span class="va-optional">Optional</span></label><input data-discount-input type="number" min="0" step="0.01" name="prices[<?= $index ?>][discount_price]" value="<?= esc((string) ($price['discount_price'] ?? '')) ?>" placeholder="e.g. 22500000"><input data-discount-hidden type="hidden" name="prices[<?= $index ?>][discount_percentage]" value="<?= esc((string) ($percent ?: '')) ?>"><div class="va-help" data-discount-help><?= $percent > 0 ? 'Customer saves ' . esc(rtrim(rtrim(number_format($percent, 2), '0'), '.')) . '%.' : 'Percentage is calculated automatically.' ?></div></div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+        <template id="priceRowTemplate">
+            <div class="va-price-row" data-price-row>
+                <div class="va-price-row__head">
+                    <div class="va-price-row__title"><span class="va-price-number">#__NUMBER__</span><div><strong>Price option</strong><small>Configure amount, billing unit and optional purpose.</small></div></div>
+                    <div class="va-price-row__tools"><span class="va-discount-badge" data-discount-badge>No discount</span><button class="va-btn va-btn--danger va-btn--sm va-price-remove" type="button" data-remove-price title="Remove price"><i class="fa-solid fa-trash"></i></button></div>
+                </div>
+                <div class="va-price-row__grid">
+                    <div class="va-field"><label>Price (₦)</label><input data-price-input type="number" min="1" step="0.01" name="prices[__INDEX__][price]" required placeholder="e.g. 25000000"></div>
+                    <div class="va-field"><label>Price unit</label><select name="prices[__INDEX__][price_unit]" required><option>One Time</option><option>Year</option><option>Month</option><option>Week</option><option>Night</option><option>Day</option></select></div>
+                    <div class="va-field"><label>Purpose <span class="va-optional">Optional</span></label><select name="prices[__INDEX__][purpose_id]"><option value="">General / any purpose</option><?php foreach ($purposes as $purposeOption): ?><?php if ((int) $purposeOption->is_active === 1): ?><option value="<?= (int) $purposeOption->id ?>"><?= esc($purposeOption->name) ?></option><?php endif; ?><?php endforeach; ?></select></div>
+                    <div class="va-field"><label>Discount price (₦) <span class="va-optional">Optional</span></label><input data-discount-input type="number" min="0" step="0.01" name="prices[__INDEX__][discount_price]" placeholder="Optional"><input data-discount-hidden type="hidden" name="prices[__INDEX__][discount_percentage]"><div class="va-help" data-discount-help>Percentage is calculated automatically.</div></div>
+                </div>
+            </div>
+        </template>
+    </section>
+
+    <section class="va-card">
+        <div class="va-card-head"><div><strong>Property details</strong><div class="va-help">Useful specifications for buyers, renters and search filters.</div></div></div>
+        <div class="va-card-body va-form-grid va-form-grid--3">
+            <div class="va-field"><label>Bedrooms</label><input type="number" min="0" name="bedrooms" value="<?= esc((string) $value('bedrooms', $isEdit ? $property->bedrooms : 0)) ?>"></div>
+            <div class="va-field"><label>Bathrooms</label><input type="number" min="0" name="bathrooms" value="<?= esc((string) $value('bathrooms', $isEdit ? $property->bathrooms : 0)) ?>"></div>
+            <div class="va-field"><label>Toilets</label><input type="number" min="0" name="toilets" value="<?= esc((string) $value('toilets', $isEdit ? $property->toilets : 0)) ?>"></div>
+            <div class="va-field"><label>Area (m²)</label><input type="number" min="0" step="0.01" name="area_sqm" value="<?= esc((string) $value('area_sqm', $isEdit ? $property->area_sqm : '')) ?>" placeholder="500"></div>
+            <div class="va-field"><label>Latitude</label><input type="text" name="latitude" value="<?= esc((string) $value('latitude', $isEdit ? $property->latitude : '')) ?>" placeholder="9.0765"></div>
+            <div class="va-field"><label>Longitude</label><input type="text" name="longitude" value="<?= esc((string) $value('longitude', $isEdit ? $property->longitude : '')) ?>" placeholder="7.3986"></div>
+        </div>
+    </section>
+
+    <section class="va-card">
+        <div class="va-card-head"><div><strong>Description</strong><div class="va-help">Use headings, lists and emphasis to make long property information easy to scan.</div></div></div>
+        <div class="va-card-body">
+            <input type="hidden" name="description" id="descriptionInput" value="<?= esc($currentDescription) ?>">
+            <div id="quillEditor"><?= $currentDescription ?></div>
+        </div>
+    </section>
+
+    <section class="va-card">
+        <div class="va-card-head"><div><strong>Photos & video</strong><div class="va-help">The primary image becomes the listing cover. YouTube URLs are embedded professionally on the property page.</div></div></div>
+        <div class="va-card-body va-form-stack">
+            <?php if ($isEdit && ! empty($existingImages)): ?>
+                <div>
+                    <div class="va-section-title"><div><h2>Current gallery</h2><p>Choose the best image as the listing cover or remove outdated photos.</p></div></div>
+                    <div class="va-image-grid">
+                        <?php foreach ($existingImages as $image): ?>
+                            <div class="va-image-card">
+                                <img src="<?= esc(property_image_url($image->image_path)) ?>" alt="Property image">
+                                <div class="va-image-card__foot">
+                                    <?php if ((int) $image->is_primary === 1): ?><span class="va-badge va-badge--active"><i class="fa-solid fa-star"></i> Primary</span><?php else: ?><button class="va-btn va-btn--light va-btn--sm" type="submit" form="primary-image-<?= (int) $image->id ?>" title="Set as primary"><i class="fa-regular fa-star"></i></button><?php endif; ?>
+                                    <button class="va-btn va-btn--danger va-btn--sm" type="submit" form="delete-image-<?= (int) $image->id ?>" onclick="return confirm('Remove this image?');"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <label class="va-dropzone" for="images"><i class="fa-regular fa-images"></i><strong style="display:block;margin-top:10px"><?= $isEdit ? 'Add more property photos' : 'Upload property photos' ?></strong><span class="va-help">JPG, PNG or WebP. Up to 20 files, maximum 5 MB each.</span><input id="images" data-image-input type="file" name="images[]" accept="image/jpeg,image/png,image/webp" multiple <?= $isEdit ? '' : 'required' ?> style="display:block;margin:14px auto 0;max-width:330px"></label>
+            <div class="va-image-grid" data-image-preview></div>
+
+            <div class="va-form-grid">
+                <div class="va-field"><label for="video_url">YouTube video URL</label><input id="video_url" type="url" name="video_url" value="<?= esc((string) $value('video_url', $isEdit ? $property->video_url : '')) ?>" placeholder="https://www.youtube.com/watch?v=..."><div class="va-help">YouTube watch, share, Shorts and embed URLs are supported.</div></div>
+                <div class="va-field"><label for="virtual_tour_url">Virtual tour URL</label><input id="virtual_tour_url" type="url" name="virtual_tour_url" value="<?= esc((string) $value('virtual_tour_url', $isEdit ? $property->virtual_tour_url : '')) ?>" placeholder="https://..."></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="va-card">
+        <div class="va-card-head"><div><strong>Amenities</strong><div class="va-help">Select every feature that meaningfully describes this property.</div></div><a class="va-btn va-btn--light va-btn--sm" href="<?= base_url('admin/amenities') ?>" target="_blank">Manage amenities</a></div>
+        <div class="va-card-body">
+            <?php if (empty($amenities)): ?><div class="va-empty">No amenities have been created yet.</div><?php else: ?>
+                <div class="va-check-grid">
+                    <?php foreach ($amenities as $amenity): ?>
+                        <label class="va-check"><input type="checkbox" name="amenities[]" value="<?= (int) $amenity->id ?>" <?= in_array((int) $amenity->id, array_map('intval', $selectedAmenities ?? []), true) ? 'checked' : '' ?>><i class="fa-solid <?= esc($amenity->icon ?: 'fa-check') ?>" style="color:#9b7615"></i><span><?= esc($amenity->name) ?></span></label>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </section>
+
+    <section class="va-card">
+        <div class="va-card-head"><div><strong>Search & social metadata</strong><div class="va-help">Optional. Leave blank and the site generates sensible metadata from the property content.</div></div></div>
+        <div class="va-card-body va-form-grid">
+            <div class="va-field va-span-2"><label>SEO title</label><input type="text" name="meta_title" maxlength="100" value="<?= esc((string) $value('meta_title', $isEdit ? $property->meta_title : '')) ?>" placeholder="Luxury 4 Bedroom Duplex in Asokoro | Vantage Luxe Realty"></div>
+            <div class="va-field va-span-2"><label>Meta description</label><textarea name="meta_description" maxlength="180" placeholder="A concise description for Google and social sharing."><?= esc((string) $value('meta_description', $isEdit ? $property->meta_description : '')) ?></textarea></div>
+        </div>
+    </section>
+
+    <div class="va-actions-sticky">
+        <a class="va-btn va-btn--light" href="<?= base_url('admin/properties') ?>">Cancel</a>
+        <?php if ($isEdit): ?><button class="va-btn va-btn--light" type="submit" name="action" value="sold"><i class="fa-solid fa-handshake"></i> Mark sold</button><?php endif; ?>
+        <button class="va-btn va-btn--light" type="submit" name="action" value="draft"><i class="fa-regular fa-floppy-disk"></i> Save draft</button>
+        <button class="va-btn va-btn--gold" type="submit" name="action" value="publish"><i class="fa-solid fa-paper-plane"></i> <?= $isEdit ? 'Update & publish' : 'Publish property' ?></button>
+    </div>
+</form>
+
+<?php if ($isEdit && ! empty($existingImages)): ?>
+    <?php foreach ($existingImages as $image): ?>
+        <form id="primary-image-<?= (int) $image->id ?>" method="post" action="<?= base_url('admin/properties/set-primary-image/' . $image->id) ?>" hidden><?= csrf_field() ?></form>
+        <form id="delete-image-<?= (int) $image->id ?>" method="post" action="<?= base_url('admin/properties/delete-image/' . $image->id) ?>" hidden><?= csrf_field() ?></form>
+    <?php endforeach; ?>
+<?php endif; ?>
+
+<?= $this->endSection() ?>
+
+<?= $this->section('scripts') ?>
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    if (typeof Quill === 'undefined') return;
+    const editor = new Quill('#quillEditor', {
+        theme: 'snow',
+        placeholder: 'Describe the property, location advantages, finishing, services, title documentation and other important details…',
+        modules: { toolbar: [[{ header: [2, 3, false] }], ['bold', 'italic'], [{ list: 'ordered' }, { list: 'bullet' }], ['blockquote'], ['clean']] }
     });
+    document.getElementById('propertyForm').addEventListener('submit', function () {
+        document.getElementById('descriptionInput').value = editor.root.innerHTML;
+    });
+});
 </script>
 <?= $this->endSection() ?>

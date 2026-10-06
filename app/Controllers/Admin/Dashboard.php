@@ -5,6 +5,7 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Models\PropertyModel;
 use App\Models\PropertyPriceModel;
+use App\Models\PropertyRequestModel;
 
 class Dashboard extends BaseController
 {
@@ -12,49 +13,52 @@ class Dashboard extends BaseController
     {
         $propertyModel = new PropertyModel();
         $priceModel = new PropertyPriceModel();
-
-        // 1. Calculate Analytics
-        $totalProperties = $propertyModel->countAllResults();
-        $activeShortlets = $propertyModel->where('purpose', 'shortlet')->where('status', 'active')->countAllResults();
-        $pendingApproval = $propertyModel->where('status', 'pending')->countAllResults();
-
-        // 2. Calculate Sales Portfolio (Sum of prices for active 'sale' properties)
         $db = \Config\Database::connect();
-        $builder = $db->table('properties');
-        $builder->selectSum('property_prices.price');
-        $builder->join('property_prices', 'property_prices.property_id = properties.id', 'left');
-        $builder->where('properties.purpose', 'sale');
-        $builder->where('properties.status', 'active');
-        $salesPortfolio = $builder->get()->getRow()->price ?? 0;
 
-        // 3. Fetch Recent Properties (Last 5)
-        $recentProperties = $propertyModel->orderBy('created_at', 'DESC')->limit(5)->find();
+        $totalProperties = (new PropertyModel())->countAllResults();
+        $activeProperties = (new PropertyModel())->where('status', 'active')->countAllResults();
+        $pendingApproval = (new PropertyModel())->where('status', 'pending')->countAllResults();
+        $soldProperties = (new PropertyModel())->where('status', 'sold')->countAllResults();
 
-        // Attach the first price to each recent property for the table display
-        if (!empty($recentProperties)) {
-            $propertyIds = array_column($recentProperties, 'id');
-            $allPrices = $priceModel->whereIn('property_id', $propertyIds)->findAll();
-            
-            $pricesByProperty = [];
-            foreach ($allPrices as $price) {
-                $pricesByProperty[$price->property_id][] = $price;
+        $newRequests = 0;
+        $recentRequests = [];
+        if ($db->tableExists('property_requests')) {
+            $newRequests = (new PropertyRequestModel())->where('status', 'new')->countAllResults();
+            $recentRequests = (new PropertyRequestModel())
+                ->select('property_requests.*, properties.title AS property_title, properties.slug AS property_slug')
+                ->join('properties', 'properties.id = property_requests.property_id', 'left')
+                ->orderBy('property_requests.created_at', 'DESC')
+                ->limit(5)
+                ->find();
+        }
+
+        $recentProperties = $propertyModel
+            ->select("properties.*, (SELECT pi.image_path FROM property_images pi WHERE pi.property_id = properties.id ORDER BY pi.is_primary DESC, pi.id ASC LIMIT 1) AS image_path", false)
+            ->orderBy('properties.created_at', 'DESC')
+            ->limit(5)
+            ->find();
+
+        if ($recentProperties !== []) {
+            $ids = array_map(static fn ($property) => (int) $property->id, $recentProperties);
+            $prices = $priceModel->whereIn('property_id', $ids)->findAll();
+            $grouped = [];
+            foreach ($prices as $price) {
+                $grouped[$price->property_id][] = $price;
             }
-            
-            foreach ($recentProperties as $prop) {
-                $prop->prices = $pricesByProperty[$prop->id] ?? [];
+            foreach ($recentProperties as $property) {
+                $property->prices = $grouped[$property->id] ?? [];
             }
         }
 
-        // 4. Pass data to the view
-        $data = [
-            'title'            => 'Overview Dashboard',
-            'totalProperties'  => $totalProperties,
-            'activeShortlets'  => $activeShortlets,
-            'pendingApproval'  => $pendingApproval,
-            'salesPortfolio'   => $salesPortfolio,
-            'recentProperties' => $recentProperties
-        ];
-
-        return view('admin/dashboard', $data);
+        return view('admin/dashboard', [
+            'title' => 'Dashboard',
+            'totalProperties' => $totalProperties,
+            'activeProperties' => $activeProperties,
+            'pendingApproval' => $pendingApproval,
+            'soldProperties' => $soldProperties,
+            'newRequests' => $newRequests,
+            'recentProperties' => $recentProperties,
+            'recentRequests' => $recentRequests,
+        ]);
     }
 }

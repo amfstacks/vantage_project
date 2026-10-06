@@ -1,0 +1,14 @@
+VANTAGE LUXE REALTY — PREMIUM UPGRADE + ADMIN v2.1
+
+1. BACK UP the live files and database.
+2. Keep/copy your real .env file. This package intentionally excludes .env.
+3. If the original premium upgrade SQL has NOT been applied, import database/vantage_premium_upgrade.sql first.
+4. Import database/vantage_admin_catalog_upgrade.sql for the new database-driven types, purposes and pricing fields.
+5. Confirm app/Config/Site.php contact details and WhatsApp number.
+6. Set the final HTTPS app.baseURL in .env.
+7. Ensure PHP 8.2+ with mbstring, intl, mysqli, json and openssl enabled.
+8. Ensure writable/ and public/uploads/properties/ are writable by PHP.
+9. Test Admin → Property Types, Purposes, Add/Edit Property, multi-price discounts, /properties and enquiry submission.
+10. Hard-refresh the browser so the v2.1 admin CSS/JS is loaded.
+
+See ADMIN_V2_1_UPDATE.md and VANTAGE_PREMIUM_UPGRADE.md for details.

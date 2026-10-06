@@ -1,117 +1,112 @@
 <?= $this->extend('layouts/main') ?>
-
 <?= $this->section('content') ?>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="hero-inner-section-area-sidebar">
-    <img src="assets/img/all-images/hero/hero-img1.png" alt="housebox" class="hero-img1">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="hero-header-area text-center">
-            
-            <div class="space24"></div>
-            <h1>Properties Listing</h1>
-          </div>
-        </div>
-      </div>
+
+<section class="vl-page-hero vl-page-hero--listings">
+    <div class="vl-container">
+        <span class="vl-kicker">Curated listings</span>
+        <h1>Find your next address.</h1>
+        <p>Explore the full collection or refine it by purpose, neighbourhood, property type, bedrooms and budget. Leave every filter untouched to see all active properties.</p>
     </div>
-  </div>
-<div class="property-inner-section-find sp1">
-    <div class="container">
-        
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="property-mapgrid-area">
-                    <div class="heading1 d-flex flex-wrap justify-content-between align-items-center">
-                        
-                        <h3>Properties (<?= $total ?>)</h3>
-                        
-                        <div class="tabs-btn d-flex align-items-center">
-                            <ul class="nav nav-pills d-none d-lg-flex me-4" id="pills-tab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-grid" type="button" role="tab">
-                                        <i class="fa-solid fa-border-all"></i>
-                                    </button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-list" type="button" role="tab">
-                                        <i class="fa-solid fa-list"></i>
-                                    </button>
-                                </li>
-                            </ul>
+</section>
 
-                            <form action="<?= current_url() ?>" method="GET" class="d-flex">
-                                <?php if(!empty($searchQuery)): ?><input type="hidden" name="q" value="<?= esc($searchQuery) ?>"><?php endif; ?>
-                                <?php if(!empty($location)): ?><input type="hidden" name="location" value="<?= esc($location) ?>"><?php endif; ?>
+<section class="vl-section-sm vl-listing-shell">
+    <div class="vl-container">
+        <button class="vl-mobile-filter-toggle" type="button" data-filter-toggle aria-expanded="false" aria-controls="propertyFilterForm">
+            <span><i class="fa-solid fa-sliders"></i> Search & filters</span>
+            <span class="vl-mobile-filter-toggle__meta"><strong data-results-count-mobile><?= number_format((int) $total) ?></strong> found <i class="fa-solid fa-chevron-down"></i></span>
+        </button>
 
-                                <div class="filter-group me-3">
-                                    <select name="per_page" onchange="this.form.submit()" class="form-select border-gray-200">
-                                        <option value="12" <?= $perPage == 12 ? 'selected' : '' ?>>Show: 12</option>
-                                        <option value="24" <?= $perPage == 24 ? 'selected' : '' ?>>Show: 24</option>
-                                        <option value="48" <?= $perPage == 48 ? 'selected' : '' ?>>Show: 48</option>
-                                    </select>
-                                </div>
-                                <div class="filter-group">
-                                    <select name="sort" onchange="this.form.submit()" class="form-select border-gray-200">
-                                        <option value="newest" <?= $currentSort == 'newest' ? 'selected' : '' ?>>Sort: Newest</option>
-                                        <option value="oldest" <?= $currentSort == 'oldest' ? 'selected' : '' ?>>Sort: Oldest</option>
-                                        <option value="price_low" <?= $currentSort == 'price_low' ? 'selected' : '' ?>>Price: Low to High</option>
-                                        <option value="price_high" <?= $currentSort == 'price_high' ? 'selected' : '' ?>>Price: High to Low</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                        
-                    </div>
+        <form id="propertyFilterForm" class="vl-filter-card" action="<?= base_url('properties') ?>" method="get" data-ajax-url="<?= base_url('ajax/properties') ?>" novalidate>
+            <div class="vl-filter-card__head">
+                <div>
+                    <span class="vl-kicker">Refine your search</span>
+                    <h2>Find exactly what fits</h2>
                 </div>
+                <button class="vl-filter-card__close" type="button" data-filter-close aria-label="Close filters"><i class="fa-solid fa-xmark"></i></button>
             </div>
-        </div>
-        
-        <div class="space32"></div>
 
-        <div class="tab-content" id="pills-tabContent">
-            
-            <div class="tab-pane fade show active" id="pills-grid" role="tabpanel">
-                <div class="row">
-                    <?php if(empty($properties)): ?>
-                        <div class="col-12 text-center py-5">
-                            <h4 class="text-muted">No properties match your search criteria.</h4>
-                            <a href="<?= base_url('properties') ?>" class="btn btn-outline-primary mt-3">Clear Filters</a>
-                        </div>
-                    <?php else: ?>
-                        <?php foreach($properties as $prop): ?>
-                            <div class="col-lg-4 col-md-6 mb-4">
-                                <?= view('components/property_card', ['property' => $prop]) ?>
-                            </div>
+            <div class="vl-filter-grid">
+                <div class="vl-field vl-field--search">
+                    <label for="filter-q">Keyword</label>
+                    <div class="vl-input-icon"><i class="fa-solid fa-magnifying-glass"></i><input id="filter-q" type="search" name="q" value="<?= esc($filters['q']) ?>" placeholder="Area, property or keyword"></div>
+                </div>
+                <div class="vl-field">
+                    <label for="filter-purpose">Purpose</label>
+                    <select id="filter-purpose" name="purpose" data-search-select data-search-placeholder="Search purposes…">
+                        <option value="">Any purpose</option>
+                        <?php foreach ($purposes as $purpose): ?>
+                            <option value="<?= esc($purpose->slug) ?>" <?= $filters['purpose'] === $purpose->slug ? 'selected' : '' ?>><?= esc($purpose->name) ?></option>
                         <?php endforeach; ?>
-                    <?php endif; ?>
+                    </select>
                 </div>
-            </div>
-
-            <div class="tab-pane fade" id="pills-list" role="tabpanel">
-                <div class="row">
-                    <?php if(!empty($properties)): ?>
-                        <?php foreach($properties as $prop): ?>
-                            <?= view('components/property_card_list', ['property' => $prop]) ?>
+                <div class="vl-field">
+                    <label for="filter-location">Location</label>
+                    <select id="filter-location" name="location" data-search-select data-search-placeholder="Search locations…">
+                        <option value="">All locations</option>
+                        <?php foreach ($locations as $item): ?>
+                            <option value="<?= esc($item->location) ?>" <?= $filters['location'] === $item->location ? 'selected' : '' ?>><?= esc($item->location) ?></option>
                         <?php endforeach; ?>
-                    <?php endif; ?>
+                    </select>
+                </div>
+                <div class="vl-field">
+                    <label for="filter-type">Property type</label>
+                    <select id="filter-type" name="type" data-search-select data-search-placeholder="Search property types…">
+                        <option value="">All property types</option>
+                        <?php foreach ($types as $item): ?>
+                            <option value="<?= esc($item->slug) ?>" <?= $filters['type'] === $item->slug ? 'selected' : '' ?>><?= esc($item->name) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="vl-field">
+                    <label for="filter-bedrooms">Bedrooms</label>
+                    <select id="filter-bedrooms" name="bedrooms" data-search-select data-search-placeholder="Search…">
+                        <option value="">Any</option>
+                        <?php foreach ([1,2,3,4,5] as $bed): ?>
+                            <option value="<?= $bed ?>" <?= (int) $filters['bedrooms'] === $bed ? 'selected' : '' ?>><?= $bed ?>+ bedrooms</option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="vl-filter-actions">
+                    <button class="vl-btn vl-btn--gold" type="submit" aria-label="Apply filters"><i class="fa-solid fa-sliders"></i> Apply</button>
                 </div>
             </div>
 
-        </div>
-
-        <div class="row mt-5">
-            <div class="col-lg-12">
-               <?= $pager->links('default', 'housebox_pager') ?>
+            <div class="vl-filter-secondary">
+                <div class="vl-field">
+                    <label for="min-price">Min price (₦)</label>
+                    <input id="min-price" type="number" min="0" step="1000" name="min_price" value="<?= esc((string) $filters['min_price']) ?>" placeholder="No minimum">
+                </div>
+                <div class="vl-field">
+                    <label for="max-price">Max price (₦)</label>
+                    <input id="max-price" type="number" min="0" step="1000" name="max_price" value="<?= esc((string) $filters['max_price']) ?>" placeholder="No maximum">
+                </div>
+                <div class="vl-field">
+                    <label for="filter-sort">Sort by</label>
+                    <select id="filter-sort" name="sort" data-search-select data-search-placeholder="Search sorting options…">
+                        <option value="newest" <?= $filters['sort'] === 'newest' ? 'selected' : '' ?>>Newest first</option>
+                        <option value="price_low" <?= $filters['sort'] === 'price_low' ? 'selected' : '' ?>>Price: low to high</option>
+                        <option value="price_high" <?= $filters['sort'] === 'price_high' ? 'selected' : '' ?>>Price: high to low</option>
+                        <option value="oldest" <?= $filters['sort'] === 'oldest' ? 'selected' : '' ?>>Oldest first</option>
+                    </select>
+                </div>
+                <div class="vl-filter-reset-wrap">
+                    <a class="vl-btn vl-btn--light vl-btn--wide" href="<?= base_url('properties') ?>" data-clear-filters><i class="fa-solid fa-rotate-left"></i> Clear filters</a>
+                </div>
             </div>
+        </form>
+
+        <div class="vl-results-bar">
+            <div>
+                <div class="vl-results-count"><span data-results-count><?= number_format((int) $total) ?></span> propert<?= (int) $total === 1 ? 'y' : 'ies' ?> found</div>
+                <div class="vl-muted vl-results-caption">Results update without reloading the whole page.</div>
+            </div>
+            <a class="vl-btn vl-btn--light" href="<?= base_url('contact') ?>"><i class="fa-regular fa-message"></i> Need help choosing?</a>
         </div>
 
+        <div id="propertyResults" aria-live="polite">
+            <?= view('components/property_results', ['properties' => $properties, 'pager' => $pager]) ?>
+        </div>
     </div>
-</div>
+</section>
 
 <?= $this->endSection() ?>
