@@ -25,7 +25,95 @@ $heroImage = $heroProperty ? property_image_url($heroProperty->image_path ?? nul
     </div>
     <div class="vl-scroll-cue" aria-hidden="true"><span></span> Discover</div>
 </section>
+<!-- Desktop / Tablet Property Finder -->
+<section class="vl-home-finder vl-search-panel">
+    <div class="vl-container">
 
+        <form
+            class="vl-home-finder__form"
+            action="<?= base_url('properties') ?>"
+            method="get"
+            novalidate
+        >
+
+            <div class="vl-field">
+                <label for="home-location">Location</label>
+
+                <select
+                    id="home-location"
+                    name="location"
+                    data-search-select
+                    data-search-placeholder="Search locations…"
+                >
+                    <option value="">Any location</option>
+
+                    <?php foreach ($locations as $location): ?>
+                        <option value="<?= esc($location->location) ?>">
+                            <?= esc($location->location) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+
+            <div class="vl-field">
+                <label for="home-purpose">Purpose</label>
+
+                <select
+                    id="home-purpose"
+                    name="purpose"
+                    data-search-select
+                    data-search-placeholder="Search purposes…"
+                >
+                    <option value="">Any purpose</option>
+
+                    <?php foreach ($purposes as $purpose): ?>
+                        <option value="<?= esc($purpose->slug) ?>">
+                            <?= esc($purpose->name) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+
+            <div class="vl-field">
+                <label for="home-type">Property type</label>
+
+                <select
+                    id="home-type"
+                    name="type"
+                    data-search-select
+                    data-search-placeholder="Search property types…"
+                >
+                    <option value="">Any property type</option>
+
+                    <?php foreach ($types as $type): ?>
+                        <option value="<?= esc($type->slug) ?>">
+                            <?= esc($type->name) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+
+            <div class="vl-home-finder__action">
+                <span class="vl-home-finder__action-label">
+                    Find your property
+                </span>
+
+                <button
+                    class="vl-btn vl-btn--gold vl-home-finder__button"
+                    type="submit"
+                >
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Search
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</section>
 <!-- Non-blocking property finder: compact until the visitor asks for it. -->
 <div class="vl-search-dock" data-search-dock>
     <button class="vl-search-dock__trigger" type="button" data-search-dock-trigger aria-expanded="false" aria-controls="homePropertyFinder">
